@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+
+  authservice:
+    build:
+      context: ./src/Services/AuthService
+    ports:
+      - "5001:8080"
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: "YourStrong@Passw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
