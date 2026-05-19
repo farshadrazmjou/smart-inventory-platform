@@ -1,6 +1,7 @@
 using AuthService.Data;
 using AuthService.DTOs;
 using AuthService.Models;
+using AuthService.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,25 @@ public class AuthController : ControllerBase
     {
         _context = context;
         _passwordHasher = new PasswordHasher<User>();
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginRequest loginRequest,JwtService jwtService)
+    {
+        var user=_context.Users.FirstOrDefault(u => u.Username==loginRequest.Username);
+
+        if(user==null)
+            return Unauthorized("Invalid credentials");
+        
+        var passwordHasher=new PasswordHasher<User>();
+
+        var result=passwordHasher.VerifyHashedPassword(user,user.PasswordHash,loginRequest.Password);
+
+        if(result==PasswordVerificationResult.Failed)
+            return Unauthorized("Invalid credential");
+
+        var token=jwtService.GenerateToken(user);
+        return Ok(new {token});
     }
 
     [HttpPost("register")]
