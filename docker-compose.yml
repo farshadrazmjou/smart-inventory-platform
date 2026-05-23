@@ -7,7 +7,7 @@ services:
     container_name: sqlserver
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "YourStrong@Passw0rd"
+      MSSQL_SA_PASSWORD: "YourStrong@Passw0rd"
     ports:
       - "1433:1433"
     volumes:
@@ -15,9 +15,20 @@ services:
 
   authservice:
     build:
-      context: ./src/Services/AuthService
+      context: \src\Services\AuthService
+
+    container_name: authservice
+
     ports:
       - "5001:8080"
+
+    depends_on:
+      - sqlserver
+
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=AuthDb;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;
+
 
 volumes:
   sqlserver_data:
