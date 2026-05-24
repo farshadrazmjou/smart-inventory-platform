@@ -5,22 +5,24 @@ using System.Security.Claims;
 namespace AuthService.Controllers;
 
 [ApiController]
-[Route("/api/[Controller]")]
+[Route(template: "/api/[Controller]")]
 public class UserController:ControllerBase
 {
     [Authorize]    
-    [HttpGet("profile")]
+    [HttpGet(template: "profile")]
     public IActionResult GetProfile()
     {        
-        var userId=User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var userId=User.FindFirstValue(claimType: ClaimTypes.NameIdentifier);
         var username=User.Identity?.Name;
-        var email = User.FindFirstValue(ClaimTypes.Email);
+        var email = User.FindFirstValue(claimType: ClaimTypes.Email);
+        var role=User.FindFirstValue(claimType: ClaimTypes.Role);
 
-        return Ok(new
+        return Ok(value: new
         {
             UserId = userId,
             Username = username,
-            Email = email
+            Email = email,
+            Role=role
         });
     }
 }
