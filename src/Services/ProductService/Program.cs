@@ -1,10 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 using System.Text;
-using ProductService.Data;
+using ProductService.Infrastructure.Data;
+using ProductService.Application.Interfaces;
+using ProductService.Infrastructure.Repositories;
+using ProductService.API.Middlewares;
+using ProductService.Application.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -67,6 +70,11 @@ builder.Services.AddSwaggerGen(options =>
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.AddScoped<IProductService,ProductService.Application.Services.ProductService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+builder.Services.AddAutoMapper(typeof(ProductProfile));
+
 var app = builder.Build();
 
 
@@ -76,6 +84,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthentication();
 app.UseAuthorization();
