@@ -1,11 +1,11 @@
+using ProductService.Application.Common;
 using ProductService.Application.DTOs;
-using ProductService.Domain.Entities;
 
 namespace ProductService.Application.Interfaces;
 
 public interface IProductService
 {
-    Task<List<Product>> GetAllAsync();
+    Task<PagedResponse<ProductResponse>> GetAllAsync(ProductQueryParameter productQueryParameter);
 
-    Task<Product> CreateAsync(CreateProductRequest request);
+    Task<ProductResponse> CreateAsync(CreateProductRequest request);
 }

@@ -2,6 +2,7 @@ using ProductService.Application.Interfaces;
 using ProductService.Application.DTOs;
 using ProductService.Domain.Entities;
 using AutoMapper;
+using ProductService.Application.Common;
 
 namespace ProductService.Application.Services;
 
@@ -16,15 +17,24 @@ public class ProductService:IProductService
         _mapper=mapper;
     }
 
-    public async Task<List<Product>> GetAllAsync()
+    public async Task<PagedResponse<ProductResponse>> GetAllAsync(ProductQueryParameter productQueryParameter)
     {
-        return await _repository.GetAllAsync();
+        var result= await _repository.GetAllAsync(productQueryParameter);
+        return new PagedResponse<ProductResponse>()
+        {
+            Items=_mapper.Map<List<ProductResponse>>(result.Items),
+            Page=productQueryParameter.Page,
+            PageSize=productQueryParameter.PageSize,
+            TotalCount=result.TotalCount
+        };
     }
 
-    public async Task<Product> CreateAsync(CreateProductRequest request)
+    public async Task<ProductResponse> CreateAsync(CreateProductRequest request)
     {
-        Product product=_mapper.Map<Product>(request);
+        Product product=_mapper.Map<Product>(source: request);
         
-        return await _repository.AddAsync(product);
+        var createdProduct= await _repository.AddAsync(product);
+
+        return _mapper.Map<ProductResponse>(source: createdProduct);
     }
 }

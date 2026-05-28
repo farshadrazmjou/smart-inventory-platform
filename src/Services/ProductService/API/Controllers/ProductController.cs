@@ -20,10 +20,10 @@ public class ProductController : ControllerBase
 
     [Authorize]
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] ProductQueryParameter productQueryParameter)
     {
-        var products=await _productService.GetAllAsync();
-        return Ok(value: new ApiResponse<List<Product>>
+        var products=await _productService.GetAllAsync(productQueryParameter);
+        return Ok(value: new ApiResponse<PagedResponse<ProductResponse>>
         {
             Success=true,
             Message= "Products fetch successfully",
@@ -36,7 +36,7 @@ public class ProductController : ControllerBase
     public async Task<IActionResult> Create(CreateProductRequest request)
     {
         var product=await _productService.CreateAsync(request);
-        return Ok(value: new ApiResponse<Product>{
+        return Ok(value: new ApiResponse<ProductResponse>{
              Success=true,
              Message= "Product created successfully",
              Data=product
