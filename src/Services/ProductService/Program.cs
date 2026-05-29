@@ -8,13 +8,60 @@ using ProductService.Application.Interfaces;
 using ProductService.Infrastructure.Repositories;
 using ProductService.API.Middlewares;
 using ProductService.Application.Mappings;
+using Serilog;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using ProductService.Application.DTOs;
+using Microsoft.AspNetCore.Mvc;
+using ProductService.Application.Common;
+
+Log.Logger = new LoggerConfiguration()
+    .Enrich.FromLogContext()
+    .WriteTo.Console(
+        outputTemplate:
+        "[{Timestamp:HH:mm:ss} {Level:u3}] " +
+        "[CorrelationId: {CorrelationId}] " +
+        "{Message:lj}{NewLine}{Exception}")
+    .WriteTo.File(
+        path: "Logs/log-.txt",
+        rollingInterval: RollingInterval.Day,
+        outputTemplate:
+        "{Timestamp:yyyy-MM-dd HH:mm:ss} " +
+        "[{Level:u3}] " +
+        "[CorrelationId: {CorrelationId}] " +
+        "{Message:lj}{NewLine}{Exception}")
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseSerilog();
+
 builder.Services.AddControllers();
+
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateProductRequest>();
 
 builder.Services.AddDbContext<ProductDbContext>(optionsAction: op =>
 {
     op.UseSqlServer(connectionString: builder.Configuration.GetConnectionString(name: "DefaultConnection"));
+});
+
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.InvalidModelStateResponseFactory = context =>
+    {
+        var errors = context.ModelState
+            .Values
+            .SelectMany(v => v.Errors)
+            .Select(e => e.ErrorMessage)
+            .ToList();
+
+        var response = new ValidationErrorResponse
+        {
+            Errors = errors
+        };
+
+        return new BadRequestObjectResult(response);
+    };
 });
 
 builder.Services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
@@ -66,9 +113,6 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<IProductService,ProductService.Application.Services.ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -77,15 +121,10 @@ builder.Services.AddAutoMapper(typeof(ProductProfile));
 
 var app = builder.Build();
 
-
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
+app.UseMiddleware<CorrelationIdMiddleware>();
 app.UseMiddleware<ExceptionMiddleware>();
+
+app.UseSerilogRequestLogging();
 
 app.UseAuthentication();
 app.UseAuthorization();

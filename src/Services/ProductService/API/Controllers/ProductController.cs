@@ -19,7 +19,7 @@ public class ProductController : ControllerBase
     }
 
     [Authorize]
-    [HttpGet]
+    [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll([FromQuery] ProductQueryParameter productQueryParameter)
     {
         var products=await _productService.GetAllAsync(productQueryParameter);
@@ -32,7 +32,7 @@ public class ProductController : ControllerBase
     }
 
     [Authorize(Roles ="Admin")]
-    [HttpPost]
+    [HttpPost("Create")]
     public async Task<IActionResult> Create(CreateProductRequest request)
     {
         var product=await _productService.CreateAsync(request);
