@@ -7,7 +7,8 @@ using ProductService.Domain.Entities;
 
 namespace ProductService.Application.Features.Products.Commands;
 
-public class CreateProductCommandHandler:IRequestHandler<CreateProductCommand,ApiResponse<ProductResponse>>
+public class CreateProductCommandHandler:
+                    IRequestHandler<CreateProductCommand,ApiResponse<ProductResponse>>
 {
     private readonly IProductRepository _repository;
     private readonly IMapper _mapper;

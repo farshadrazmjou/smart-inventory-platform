@@ -15,7 +15,6 @@ using ProductService.Application.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Application.Common;
 using MediatR;
-using System.Reflection;
 using ProductService.Application.Features.Products.Queries;
 using ProductService.Application.Behaviors;
 
@@ -120,14 +119,18 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddTransient(
-    typeof(IPipelineBehavior<,>),
-    typeof(ValidationBehavior<,>));
+    serviceType: typeof(IPipelineBehavior<,>),
+    implementationType: typeof(ValidationBehavior<,>));
 
 builder.Services.AddTransient(
-    typeof(IPipelineBehavior<,>),
-    typeof(LoggingBehavior<,>));
+    serviceType: typeof(IPipelineBehavior<,>),
+    implementationType: typeof(LoggingBehavior<,>));
 
-builder.Services.AddScoped<IProductService,ProductService.Application.Services.ProductService>();
+builder.Services.AddTransient(
+    serviceType: typeof(IPipelineBehavior<,>),
+    implementationType: typeof(PerformanceBehavior<,>)
+);
+
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddAutoMapper(typeof(ProductProfile));

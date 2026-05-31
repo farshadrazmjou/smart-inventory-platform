@@ -55,4 +55,28 @@ public class ProductRepository:IProductRepository
         await _context.SaveChangesAsync();
         return product;
     }
+
+    public Task<Product> GetByIdAsync(Guid Id)
+    {
+        return _context.Products.Where(p => p.Id==Id).FirstAsync();
+    }
+
+    public async Task<Product> UpdateAsync(Guid Id, Product product)
+    {
+        var productForUpdate=await _context.Products.Where(p => p.Id==Id).FirstAsync();
+        productForUpdate.Name=product.Name;
+        productForUpdate.Price=product.Price;
+        productForUpdate.Stock=product.Stock;
+        productForUpdate.Description=product.Description;
+        await _context.SaveChangesAsync();
+        return productForUpdate;
+    }
+
+    public async Task<Product> DeleteAsync(Guid Id)
+    {
+        var productForDelete=await _context.Products.Where(p => p.Id==Id).FirstAsync();
+        _context.Products.Remove(productForDelete);
+        await _context.SaveChangesAsync();
+        return productForDelete;
+    }
 }

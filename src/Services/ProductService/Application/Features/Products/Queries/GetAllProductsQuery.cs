@@ -4,4 +4,5 @@ using ProductService.Application.DTOs;
 
 namespace ProductService.Application.Features.Products.Queries;
 
-public record GetAllProductsQuery(ProductQueryParameter Parameter):IRequest<PagedResponse<ProductResponse>>;
+public record GetAllProductsQuery(ProductQueryParameter Parameter):
+                    IRequest<PagedResponse<ProductResponse>>;

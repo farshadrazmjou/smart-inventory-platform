@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Application.Common;
 using ProductService.Application.DTOs;
+using ProductService.Application.Features.Products;
 using ProductService.Application.Features.Products.Commands;
 using ProductService.Application.Features.Products.Queries;
 using ProductService.Application.Interfaces;
@@ -21,7 +22,7 @@ public class ProductController : ControllerBase
     }
 
     [Authorize]
-    [HttpGet("GetAll")]
+    [HttpGet("GetAllProducts")]
     public async Task<IActionResult> GetAll([FromQuery] ProductQueryParameter productQueryParameter)
     {
         var products=await _mediator.Send(new GetAllProductsQuery(productQueryParameter));
@@ -34,11 +35,26 @@ public class ProductController : ControllerBase
     }
 
     [Authorize(Roles ="Admin")]
-    [HttpPost("Create")]
+    [HttpPost("CreateProduct")]
     public async Task<IActionResult> Create(CreateProductRequest request)
     {
         var result =await _mediator.Send(new CreateProductCommand(CreateProductRequest: request));
         return Ok(value: result);
     }
 
+    [Authorize(Roles ="Admin")]
+    [HttpPost("UpdateProduct")]
+    public async Task<IActionResult> Update(Guid Id,UpdateProductRequest updateProductRequest)
+    {
+        var result=await _mediator.Send(new UpdateProductCommand(Id,updateProductRequest));
+        return Ok(result);
+    }
+
+    [Authorize(Roles ="Admin")]
+    [HttpPost("DeleteProduct")]
+    public async Task<IActionResult> Delete(Guid Id)
+    {
+        var result=await _mediator.Send(new DeleteProductCommand(Id));
+        return Ok(result);
+    }
 }
