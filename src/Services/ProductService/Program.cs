@@ -14,6 +14,10 @@ using FluentValidation;
 using ProductService.Application.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Application.Common;
+using MediatR;
+using System.Reflection;
+using ProductService.Application.Features.Products.Queries;
+using ProductService.Application.Behaviors;
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -44,6 +48,8 @@ builder.Services.AddDbContext<ProductDbContext>(optionsAction: op =>
 {
     op.UseSqlServer(connectionString: builder.Configuration.GetConnectionString(name: "DefaultConnection"));
 });
+
+builder.Services.AddMediatR(typeof(GetAllProductsQueryHandler).Assembly);
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
@@ -113,6 +119,13 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddTransient(
+    typeof(IPipelineBehavior<,>),
+    typeof(ValidationBehavior<,>));
+
+builder.Services.AddTransient(
+    typeof(IPipelineBehavior<,>),
+    typeof(LoggingBehavior<,>));
 
 builder.Services.AddScoped<IProductService,ProductService.Application.Services.ProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();

@@ -1,7 +1,10 @@
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Application.Common;
 using ProductService.Application.DTOs;
+using ProductService.Application.Features.Products.Commands;
+using ProductService.Application.Features.Products.Queries;
 using ProductService.Application.Interfaces;
 using ProductService.Domain.Entities;
 
@@ -11,18 +14,17 @@ namespace ProductService.API.Controllers;
 [Route(template: "api/[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly IProductService _productService;
-
-    public ProductController(IProductService productService)
+    private readonly IMediator _mediator;
+    public ProductController(IMediator mediator)
     {
-        _productService=productService;
+        _mediator=mediator;
     }
 
     [Authorize]
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll([FromQuery] ProductQueryParameter productQueryParameter)
     {
-        var products=await _productService.GetAllAsync(productQueryParameter);
+        var products=await _mediator.Send(new GetAllProductsQuery(productQueryParameter));
         return Ok(value: new ApiResponse<PagedResponse<ProductResponse>>
         {
             Success=true,
@@ -35,12 +37,8 @@ public class ProductController : ControllerBase
     [HttpPost("Create")]
     public async Task<IActionResult> Create(CreateProductRequest request)
     {
-        var product=await _productService.CreateAsync(request);
-        return Ok(value: new ApiResponse<ProductResponse>{
-             Success=true,
-             Message= "Product created successfully",
-             Data=product
-        });
+        var result =await _mediator.Send(new CreateProductCommand(CreateProductRequest: request));
+        return Ok(value: result);
     }
 
 }

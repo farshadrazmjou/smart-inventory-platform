@@ -19,6 +19,19 @@ public class ExceptionMiddleware
         {
             await _next(context);
         }
+        catch(FluentValidation.ValidationException ex)
+        {
+            context.Response.StatusCode=StatusCodes.Status400BadRequest;
+
+            var response=new
+            {
+                Success=false,
+                Message="Validation failed",
+                Errors=ex.Errors.Select( e => e.ErrorMessage)
+            };
+
+            await context.Response.WriteAsJsonAsync(response);
+        }
         catch(Exception ex)
         {
             context.Response.StatusCode=(int)HttpStatusCode.InternalServerError;
