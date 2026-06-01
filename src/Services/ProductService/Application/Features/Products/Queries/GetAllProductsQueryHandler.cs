@@ -21,6 +21,8 @@ public class GetAllProductsQueryHandler:IRequestHandler<GetAllProductsQuery,Page
 
     public async Task<PagedResponse<ProductResponse>> Handle(GetAllProductsQuery requst,CancellationToken cancellationToken)
     {
+        await Task.Delay(6000);
+
         var result=await _repository.GetAllAsync(requst.Parameter);
         return new PagedResponse<ProductResponse>()
         {

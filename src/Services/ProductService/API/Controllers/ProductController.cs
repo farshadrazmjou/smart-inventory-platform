@@ -6,8 +6,6 @@ using ProductService.Application.DTOs;
 using ProductService.Application.Features.Products;
 using ProductService.Application.Features.Products.Commands;
 using ProductService.Application.Features.Products.Queries;
-using ProductService.Application.Interfaces;
-using ProductService.Domain.Entities;
 
 namespace ProductService.API.Controllers;
 

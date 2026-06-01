@@ -87,7 +87,7 @@ builder.Services.AddAuthentication(defaultScheme: JwtBearerDefaults.Authenticati
         };
     });
 builder.Services.AddAuthorization();
-
+builder.Services.AddMemoryCache();
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -125,6 +125,10 @@ builder.Services.AddTransient(
 builder.Services.AddTransient(
     serviceType: typeof(IPipelineBehavior<,>),
     implementationType: typeof(LoggingBehavior<,>));
+
+builder.Services.AddTransient(
+    serviceType: typeof(IPipelineBehavior<,>),
+    implementationType: typeof(CachingBehavior<,>));
 
 builder.Services.AddTransient(
     serviceType: typeof(IPipelineBehavior<,>),
