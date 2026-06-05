@@ -96,4 +96,25 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// migration
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext =
+        scope.ServiceProvider.GetRequiredService<AuthDbContext>();
+
+    for (int i = 0; i < 10; i++)
+    {
+        try
+        {
+            dbContext.Database.Migrate();
+            break;
+        }
+        catch
+        {
+            await Task.Delay(5000);
+        }
+    }
+}
+
 app.Run();

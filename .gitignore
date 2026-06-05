@@ -6,4 +6,5 @@ obj/
 *.dbmdl
 *.cache
 *.pdb
+appsettings.Development.json
 docker-data/

@@ -55,7 +55,8 @@ public class AuthController : ControllerBase
         {
             Id = Guid.NewGuid(),
             Username = request.Username,
-            Email = request.Email
+            Email = request.Email,
+            Role=request.Role
         };
 
         user.PasswordHash =

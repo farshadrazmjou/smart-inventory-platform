@@ -17,6 +17,7 @@ using ProductService.Application.Common;
 using MediatR;
 using ProductService.Application.Features.Products.Queries;
 using ProductService.Application.Behaviors;
+using ProductService.Infrastructure.Caching;
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -86,6 +87,13 @@ builder.Services.AddAuthentication(defaultScheme: JwtBearerDefaults.Authenticati
                 key: Encoding.UTF8.GetBytes(s: builder.Configuration[key: "JwtSettings:Key"]!))
         };
     });
+
+// Redis
+builder.Services.AddStackExchangeRedisCache(option =>
+{
+    option.Configuration=builder.Configuration["redis:ConnectionStrings"];
+});
+
 builder.Services.AddAuthorization();
 builder.Services.AddMemoryCache();
 // Swagger
@@ -135,6 +143,7 @@ builder.Services.AddTransient(
     implementationType: typeof(PerformanceBehavior<,>)
 );
 
+builder.Services.AddScoped<IRedisCacheService,RedisCacheService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddAutoMapper(typeof(ProductProfile));
@@ -142,6 +151,8 @@ builder.Services.AddAutoMapper(typeof(ProductProfile));
 var app = builder.Build();
 
 app.UseMiddleware<CorrelationIdMiddleware>();
+app.UseSerilogRequestLogging();
+
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseSerilogRequestLogging();
@@ -154,6 +165,43 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapControllers();
+
+
+// migration
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext =
+        scope.ServiceProvider.GetRequiredService<ProductDbContext>();
+
+    Exception? lastException = null;
+
+    for (int i = 0; i < 10; i++)
+    {
+        try
+        {
+            dbContext.Database.Migrate();
+
+            Console.WriteLine("Migration Success");
+
+            lastException = null;
+            break;
+        }
+        catch (Exception ex)
+        {
+            lastException = ex;
+
+            Console.WriteLine(
+                $"Migration Retry {i + 1}/10");
+
+            await Task.Delay(5000);
+        }
+    }
+
+    if (lastException is not null)
+    {
+        throw lastException;
+    }
+}
 
 app.Run();
 

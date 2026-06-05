@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 using ProductService.Application.Caching;
+using ProductService.Infrastructure.Caching;
 
 namespace ProductService.Application.Behaviors;
 
@@ -8,9 +9,9 @@ public class CachingBehavior<TRequest, TResponse> :
                 IPipelineBehavior<TRequest, TResponse>
                 where TRequest : IRequest<TResponse>
 {
-    private readonly IMemoryCache _cache;
+    private readonly IRedisCacheService _cache;
 
-    public CachingBehavior(IMemoryCache cache)
+    public CachingBehavior(IRedisCacheService cache)
     {
         _cache=cache;
     }
@@ -23,17 +24,18 @@ public class CachingBehavior<TRequest, TResponse> :
             return await next();
         }
 
-        if (_cache.TryGetValue(key: cacheable.CacheKey, value: out TResponse? cachedResponse))
+        var cacheResponse=await _cache.GetAsync<TResponse>(cacheable.CacheKey);
+        if (cacheResponse is not null)
         {
-            return cachedResponse!;
+            return cacheResponse;
         }
 
         var response = await next();
 
-        _cache.Set(
+        await _cache.SetAsync(
             key: cacheable.CacheKey,
             value: response,
-            absoluteExpirationRelativeToNow: TimeSpan.FromMinutes(cacheable.ExpirationMinutes));
+            expiration: TimeSpan.FromMinutes(cacheable.ExpirationMinutes));
 
         return response;
     }
