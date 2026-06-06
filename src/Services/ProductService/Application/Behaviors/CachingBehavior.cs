@@ -10,10 +10,11 @@ public class CachingBehavior<TRequest, TResponse> :
                 where TRequest : IRequest<TResponse>
 {
     private readonly IRedisCacheService _cache;
-
-    public CachingBehavior(IRedisCacheService cache)
+    private readonly ILogger<CachingBehavior<TRequest,TResponse>> _logger;
+    public CachingBehavior(IRedisCacheService cache,ILogger<CachingBehavior<TRequest,TResponse>> logger)
     {
         _cache=cache;
+        _logger=logger;
     }
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
@@ -36,6 +37,19 @@ public class CachingBehavior<TRequest, TResponse> :
             key: cacheable.CacheKey,
             value: response,
             expiration: TimeSpan.FromMinutes(cacheable.ExpirationMinutes));
+
+        try
+        {
+            if (cacheable.CacheKey.StartsWith(CacheKeys.ProductsPrefix))
+            {
+                await _cache.AddCacheKeyAsync(
+                    cacheable.CacheKey);
+            }
+        }
+        catch(Exception ex)
+        {
+            _logger.LogError($"Error on caching {ex.Message}");
+        }
 
         return response;
     }

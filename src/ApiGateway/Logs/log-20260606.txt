@@ -1,0 +1,206 @@
+2026-06-06 18:29:36 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-06 18:29:36 [INF] [CorrelationId: ] Loading proxy data from config.
+2026-06-06 18:29:37 [INF] [CorrelationId: ] Now listening on: http://localhost:5118
+2026-06-06 18:29:37 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-06 18:29:37 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-06 18:29:37 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\ApiGateway
+2026-06-06 18:31:03 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - application/json 52
+2026-06-06 18:31:11 [INF] [CorrelationId: dfce5a62-eebe-4e7b-9d8b-705b7b470db4] Executing endpoint 'auth-route'
+2026-06-06 18:31:12 [INF] [CorrelationId: dfce5a62-eebe-4e7b-9d8b-705b7b470db4] Proxying to http://localhost:5134/api/Auth/login HTTP/2 RequestVersionOrLower 
+2026-06-06 18:31:22 [INF] [CorrelationId: dfce5a62-eebe-4e7b-9d8b-705b7b470db4] Received HTTP/1.1 response 200.
+2026-06-06 18:31:22 [INF] [CorrelationId: dfce5a62-eebe-4e7b-9d8b-705b7b470db4] Executed endpoint 'auth-route'
+2026-06-06 18:31:22 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - 200 null application/json; charset=utf-8 19293.7151ms
+2026-06-06 18:31:48 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:31:48 [INF] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] Executing endpoint 'product-route'
+2026-06-06 18:31:48 [INF] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 18:32:11 [INF] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] Received HTTP/1.1 response 500.
+2026-06-06 18:32:11 [INF] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] Executed endpoint 'product-route'
+2026-06-06 18:32:11 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 500 null application/json 23037.5786ms
+2026-06-06 18:32:40 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:32:40 [INF] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] Executing endpoint 'product-route'
+2026-06-06 18:32:40 [INF] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 18:32:46 [INF] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] Received HTTP/1.1 response 500.
+2026-06-06 18:32:46 [INF] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] Executed endpoint 'product-route'
+2026-06-06 18:32:46 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 500 null application/json 5763.5612ms
+2026-06-06 18:35:48 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:35:48 [INF] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] Executing endpoint 'product-route'
+2026-06-06 18:35:48 [INF] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 18:36:03 [INF] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] Received HTTP/1.1 response 500.
+2026-06-06 18:36:03 [INF] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] Executed endpoint 'product-route'
+2026-06-06 18:36:03 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 500 null application/json 15052.4671ms
+2026-06-06 18:37:10 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:10 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Executing endpoint 'product-route'
+2026-06-06 18:37:10 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 18:37:11 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Received HTTP/1.1 response 200.
+2026-06-06 18:37:11 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Executed endpoint 'product-route'
+2026-06-06 18:37:11 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 1336.0886ms
+2026-06-06 18:37:23 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Executing endpoint 'product-route'
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Received HTTP/1.1 response 200.
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Executed endpoint 'product-route'
+2026-06-06 18:37:23 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 631.6418ms
+2026-06-06 18:37:26 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Executing endpoint 'product-route'
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Received HTTP/1.1 response 200.
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Executed endpoint 'product-route'
+2026-06-06 18:37:26 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 315.3791ms
+2026-06-06 18:37:28 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Executing endpoint 'product-route'
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Received HTTP/1.1 response 200.
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Executed endpoint 'product-route'
+2026-06-06 18:37:28 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 173.6522ms
+2026-06-06 18:37:30 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Executing endpoint 'product-route'
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Received HTTP/1.1 response 200.
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Executed endpoint 'product-route'
+2026-06-06 18:37:30 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 479.622ms
+2026-06-06 18:37:32 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Executing endpoint 'product-route'
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Received HTTP/1.1 response 200.
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Executed endpoint 'product-route'
+2026-06-06 18:37:32 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 247.6446ms
+2026-06-06 18:38:31 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 85
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Executing endpoint 'product-route'
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Received HTTP/1.1 response 200.
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Executed endpoint 'product-route'
+2026-06-06 18:38:31 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 594.5445ms
+2026-06-06 18:38:45 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Executing endpoint 'product-route'
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Received HTTP/1.1 response 200.
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Executed endpoint 'product-route'
+2026-06-06 18:38:45 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 287.973ms
+2026-06-06 22:20:47 [INF] [CorrelationId: ] Application is shutting down...
+2026-06-06 22:55:26 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-06 22:55:27 [INF] [CorrelationId: ] Loading proxy data from config.
+2026-06-06 22:55:28 [INF] [CorrelationId: ] Now listening on: http://localhost:5118
+2026-06-06 22:55:28 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-06 22:55:28 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-06 22:55:28 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\ApiGateway
+2026-06-06 22:56:23 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - application/json 52
+2026-06-06 22:56:28 [INF] [CorrelationId: 2f414d5f-8a5a-41de-babb-622c95825270] Executing endpoint 'auth-route'
+2026-06-06 22:56:28 [INF] [CorrelationId: 2f414d5f-8a5a-41de-babb-622c95825270] Proxying to http://localhost:5134/api/Auth/login HTTP/2 RequestVersionOrLower 
+2026-06-06 22:56:33 [INF] [CorrelationId: 2f414d5f-8a5a-41de-babb-622c95825270] Received HTTP/1.1 response 200.
+2026-06-06 22:56:33 [INF] [CorrelationId: 2f414d5f-8a5a-41de-babb-622c95825270] Executed endpoint 'auth-route'
+2026-06-06 22:56:33 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - 200 null application/json; charset=utf-8 10421.6867ms
+2026-06-06 22:56:53 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 22:56:53 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Executing endpoint 'product-route'
+2026-06-06 22:56:53 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 22:57:00 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Received HTTP/1.1 response 200.
+2026-06-06 22:57:00 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Executed endpoint 'product-route'
+2026-06-06 22:57:00 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 6946.0327ms
+2026-06-06 22:57:23 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Executing endpoint 'product-route'
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Received HTTP/1.1 response 200.
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Executed endpoint 'product-route'
+2026-06-06 22:57:23 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 179.2246ms
+2026-06-06 22:58:13 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 90
+2026-06-06 22:58:13 [INF] [CorrelationId: 16d96f37-972d-4c02-a669-d8eb48ba1e90] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/6/2026 4:01:21 PM', Current time (UTC): '6/6/2026 7:28:13 PM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-06-06 22:58:13 [INF] [CorrelationId: 16d96f37-972d-4c02-a669-d8eb48ba1e90] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/6/2026 4:01:21 PM', Current time (UTC): '6/6/2026 7:28:13 PM'.
+2026-06-06 22:58:13 [INF] [CorrelationId: 16d96f37-972d-4c02-a669-d8eb48ba1e90] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-06 22:58:13 [INF] [CorrelationId: 16d96f37-972d-4c02-a669-d8eb48ba1e90] AuthenticationScheme: Bearer was challenged.
+2026-06-06 22:58:13 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 401 0 null 84.2022ms
+2026-06-06 22:58:28 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 90
+2026-06-06 22:58:28 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Executing endpoint 'product-route'
+2026-06-06 22:58:28 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-06 22:58:29 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Received HTTP/1.1 response 200.
+2026-06-06 22:58:29 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Executed endpoint 'product-route'
+2026-06-06 22:58:29 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 811.7667ms
+2026-06-06 22:58:39 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Executing endpoint 'product-route'
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Received HTTP/1.1 response 200.
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Executed endpoint 'product-route'
+2026-06-06 22:58:39 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 257.7336ms
+2026-06-06 23:06:28 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:06:28 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Executing endpoint 'product-route'
+2026-06-06 23:06:28 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 23:06:31 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Received HTTP/1.1 response 200.
+2026-06-06 23:06:31 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Executed endpoint 'product-route'
+2026-06-06 23:06:31 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 2447.9671ms
+2026-06-06 23:07:23 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 89
+2026-06-06 23:07:23 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Executing endpoint 'product-route'
+2026-06-06 23:07:23 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-06 23:07:24 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Received HTTP/1.1 response 200.
+2026-06-06 23:07:24 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Executed endpoint 'product-route'
+2026-06-06 23:07:24 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 563.5703ms
+2026-06-06 23:08:35 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Executing endpoint 'product-route'
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Received HTTP/1.1 response 200.
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Executed endpoint 'product-route'
+2026-06-06 23:08:35 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 210.4366ms
+2026-06-06 23:08:54 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Executing endpoint 'product-route'
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Received HTTP/1.1 response 200.
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Executed endpoint 'product-route'
+2026-06-06 23:08:54 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 174.6826ms
+2026-06-06 23:09:35 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 92
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Executing endpoint 'product-route'
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Received HTTP/1.1 response 200.
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Executed endpoint 'product-route'
+2026-06-06 23:09:35 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 180.1994ms
+2026-06-06 23:09:44 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Executing endpoint 'product-route'
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Received HTTP/1.1 response 200.
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Executed endpoint 'product-route'
+2026-06-06 23:09:44 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 295.0513ms
+2026-06-06 23:13:32 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 92
+2026-06-06 23:13:32 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Executing endpoint 'product-route'
+2026-06-06 23:13:32 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-06 23:13:34 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Received HTTP/1.1 response 200.
+2026-06-06 23:13:34 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Executed endpoint 'product-route'
+2026-06-06 23:13:34 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 1688.775ms
+2026-06-06 23:13:51 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:13:51 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Executing endpoint 'product-route'
+2026-06-06 23:13:51 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 23:13:58 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Received HTTP/1.1 response 200.
+2026-06-06 23:13:58 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Executed endpoint 'product-route'
+2026-06-06 23:13:58 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 7132.4532ms
+2026-06-06 23:14:38 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Executing endpoint 'product-route'
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Received HTTP/1.1 response 200.
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Executed endpoint 'product-route'
+2026-06-06 23:14:38 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 169.8029ms
+2026-06-06 23:14:40 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Executing endpoint 'product-route'
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Received HTTP/1.1 response 200.
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Executed endpoint 'product-route'
+2026-06-06 23:14:40 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 229.9791ms
+2026-06-06 23:15:06 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 89
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Executing endpoint 'product-route'
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Received HTTP/1.1 response 200.
+2026-06-06 23:15:07 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Executed endpoint 'product-route'
+2026-06-06 23:15:07 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 936.6932ms
+2026-06-06 23:15:21 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:15:21 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Executing endpoint 'product-route'
+2026-06-06 23:15:21 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 23:15:28 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Received HTTP/1.1 response 200.
+2026-06-06 23:15:28 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Executed endpoint 'product-route'
+2026-06-06 23:15:28 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 6909.2355ms
+2026-06-06 23:15:39 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Executing endpoint 'product-route'
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Received HTTP/1.1 response 200.
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Executed endpoint 'product-route'
+2026-06-06 23:15:39 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 227.9272ms
+2026-06-06 23:17:13 [INF] [CorrelationId: ] Application is shutting down...

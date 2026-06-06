@@ -1,0 +1,702 @@
+2026-06-06 18:31:21 [INF] [CorrelationId: ] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 18:31:21 [INF] [CorrelationId: ] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-06-06 18:31:21 [INF] [CorrelationId: ] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-06-06 18:31:21 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-06-06 18:31:21 [INF] [CorrelationId: ] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 18:31:21 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-06 18:31:21 [INF] [CorrelationId: ] Executed DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-06-06 18:31:21 [INF] [CorrelationId: ] No migrations were applied. The database is already up to date.
+2026-06-06 18:31:22 [INF] [CorrelationId: ] Executed DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-06-06 18:31:22 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-06 18:31:22 [INF] [CorrelationId: ] Now listening on: http://localhost:5192
+2026-06-06 18:31:23 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-06 18:31:23 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-06 18:31:24 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\Services\ProductService
+2026-06-06 18:31:48 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:31:56 [INF] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:31:56 [INF] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:31:56 [INF] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] Handling request GetAllProductsQuery
+2026-06-06 18:32:11 [INF] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 14694.7017ms
+2026-06-06 18:32:11 [INF] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:32:11 [ERR] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] HTTP GET /api/Product/GetAllProducts responded 500 in 22358.0038 ms
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: It was not possible to connect to the redis server(s). ConnectTimeout, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Idle, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-5D0GURN(SE.Redis-v2.7.27.49176), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=4,Max=32767), POOL: (Threads=5,QueuedItems=0,CompletedItems=68,Timers=5), v: 2.7.27.49176 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). ConnectTimeout
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at ProductService.Infrastructure.Caching.RedisCacheService.GetAsync[T](String key) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Infrastructure\Caching\RedisCacheService.cs:line 33
+   at ProductService.Application.Behaviors.CachingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Application\Behaviors\CachingBehavior.cs:line 28
+   at ProductService.Application.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Application\Behaviors\LoggingBehavior.cs:line 25
+   at ProductService.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Application\Behaviors\ValidationBehavior.cs:line 41
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at ProductService.API.Controllers.ProductController.GetAll(ProductQueryParameter productQueryParameter) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\API\Controllers\ProductController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-06-06 18:32:11 [ERR] [CorrelationId: dcefa851-f64f-4e5b-8e16-bf90683c5534] HTTP GET /api/Product/GetAllProducts responded 500 in 22571.2920 ms
+2026-06-06 18:32:11 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 500 null application/json 22696.5722ms
+2026-06-06 18:32:40 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:32:40 [INF] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:32:40 [INF] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:32:40 [INF] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] Handling request GetAllProductsQuery
+2026-06-06 18:32:45 [INF] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 5569.8833ms
+2026-06-06 18:32:45 [INF] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:32:45 [ERR] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] HTTP GET /api/Product/GetAllProducts responded 500 in 5595.4284 ms
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: It was not possible to connect to the redis server(s). ConnectTimeout, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 2, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-5D0GURN(SE.Redis-v2.7.27.49176), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=1,Free=32766,Min=4,Max=32767), POOL: (Threads=3,QueuedItems=0,CompletedItems=221,Timers=5), v: 2.7.27.49176 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). ConnectTimeout
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at ProductService.Infrastructure.Caching.RedisCacheService.GetAsync[T](String key) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Infrastructure\Caching\RedisCacheService.cs:line 33
+   at ProductService.Application.Behaviors.CachingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Application\Behaviors\CachingBehavior.cs:line 28
+   at ProductService.Application.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Application\Behaviors\LoggingBehavior.cs:line 25
+   at ProductService.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Application\Behaviors\ValidationBehavior.cs:line 41
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at ProductService.API.Controllers.ProductController.GetAll(ProductQueryParameter productQueryParameter) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\API\Controllers\ProductController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-06-06 18:32:46 [ERR] [CorrelationId: b59c867c-dad9-470b-90af-8f3f5b93b3e7] HTTP GET /api/Product/GetAllProducts responded 500 in 5632.5349 ms
+2026-06-06 18:32:46 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 500 null application/json 5706.4656ms
+2026-06-06 18:35:15 [INF] [CorrelationId: ] Application is shutting down...
+2026-06-06 18:35:34 [INF] [CorrelationId: ] Executed DbCommand (27ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-06-06 18:35:35 [INF] [CorrelationId: ] No migrations were applied. The database is already up to date.
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-06-06 18:35:35 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Now listening on: http://localhost:5192
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-06 18:35:35 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\Services\ProductService
+2026-06-06 18:35:48 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:35:48 [INF] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:35:48 [INF] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:35:48 [INF] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] Handling request GetAllProductsQuery
+2026-06-06 18:36:02 [INF] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 14394.1ms
+2026-06-06 18:36:02 [INF] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:36:02 [ERR] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] HTTP GET /api/Product/GetAllProducts responded 500 in 14618.8472 ms
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: It was not possible to connect to the redis server(s). ConnectTimeout, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Idle, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-5D0GURN(SE.Redis-v2.7.27.49176), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=4,Max=32767), POOL: (Threads=4,QueuedItems=0,CompletedItems=68,Timers=5), v: 2.7.27.49176 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). ConnectTimeout
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at ProductService.Infrastructure.Caching.RedisCacheService.GetAsync[T](String key) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Infrastructure\Caching\RedisCacheService.cs:line 33
+   at ProductService.Application.Behaviors.CachingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Application\Behaviors\CachingBehavior.cs:line 28
+   at ProductService.Application.Behaviors.LoggingBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Application\Behaviors\LoggingBehavior.cs:line 25
+   at ProductService.Application.Behaviors.ValidationBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\Application\Behaviors\ValidationBehavior.cs:line 41
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestExceptionActionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPostProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at MediatR.Pipeline.RequestPreProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)
+   at ProductService.API.Controllers.ProductController.GetAll(ProductQueryParameter productQueryParameter) in D:\VSCode_Projects\InventorySystem\src\Services\ProductService\API\Controllers\ProductController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+2026-06-06 18:36:03 [ERR] [CorrelationId: 18279483-361d-4ff4-b19b-1bde9699bda3] HTTP GET /api/Product/GetAllProducts responded 500 in 14816.4528 ms
+2026-06-06 18:36:03 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 500 null application/json 14926.7458ms
+2026-06-06 18:37:10 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:10 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:10 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:37:10 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Handling request GetAllProductsQuery
+2026-06-06 18:37:10 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2026-06-06 18:37:10 [WRN] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-06 18:37:10 [WRN] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-06 18:37:11 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Executed DbCommand (145ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-06 18:37:11 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Fetch Products complete
+2026-06-06 18:37:11 [WRN] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] SLOW REQUEST ⚠ GetAllProductsQuery took 982 ms
+2026-06-06 18:37:11 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Handled request GetAllProductsQuery in 1077 ms
+2026-06-06 18:37:11 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 18:37:11 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 1167.1963ms
+2026-06-06 18:37:11 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:11 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] HTTP GET /api/Product/GetAllProducts responded 200 in 1256.0765 ms
+2026-06-06 18:37:11 [INF] [CorrelationId: 043bb277-906c-470c-a255-5250322e48c5] HTTP GET /api/Product/GetAllProducts responded 200 in 1273.3197 ms
+2026-06-06 18:37:11 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 1305.2597ms
+2026-06-06 18:37:23 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Handling request GetAllProductsQuery
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Handled request GetAllProductsQuery in 70 ms
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 237.4197ms
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] HTTP GET /api/Product/GetAllProducts responded 200 in 458.4720 ms
+2026-06-06 18:37:23 [INF] [CorrelationId: 53eca759-ce38-4546-af51-6795bca19046] HTTP GET /api/Product/GetAllProducts responded 200 in 494.7298 ms
+2026-06-06 18:37:23 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 561.2622ms
+2026-06-06 18:37:26 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Handling request GetAllProductsQuery
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Handled request GetAllProductsQuery in 4 ms
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 45.2665ms
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] HTTP GET /api/Product/GetAllProducts responded 200 in 171.8595 ms
+2026-06-06 18:37:26 [INF] [CorrelationId: b0604012-2893-41c1-93de-a03c6a0b28ca] HTTP GET /api/Product/GetAllProducts responded 200 in 187.7526 ms
+2026-06-06 18:37:26 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 262.7937ms
+2026-06-06 18:37:28 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Handling request GetAllProductsQuery
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Handled request GetAllProductsQuery in 1 ms
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 42.9737ms
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] HTTP GET /api/Product/GetAllProducts responded 200 in 88.6965 ms
+2026-06-06 18:37:28 [INF] [CorrelationId: 0c2e4c57-69e8-4583-8959-697193afc26f] HTTP GET /api/Product/GetAllProducts responded 200 in 103.8832 ms
+2026-06-06 18:37:28 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 129.3016ms
+2026-06-06 18:37:30 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Handling request GetAllProductsQuery
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Handled request GetAllProductsQuery in 2 ms
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 36.2858ms
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] HTTP GET /api/Product/GetAllProducts responded 200 in 345.5679 ms
+2026-06-06 18:37:30 [INF] [CorrelationId: 683c6ef6-edf0-4312-acb1-39b875d2d58c] HTTP GET /api/Product/GetAllProducts responded 200 in 378.9028 ms
+2026-06-06 18:37:30 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 432.1353ms
+2026-06-06 18:37:32 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Handling request GetAllProductsQuery
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Handled request GetAllProductsQuery in 1 ms
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 26.3363ms
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] HTTP GET /api/Product/GetAllProducts responded 200 in 103.3889 ms
+2026-06-06 18:37:32 [INF] [CorrelationId: 68c9874c-6e29-4e9c-adca-8902260cf0c9] HTTP GET /api/Product/GetAllProducts responded 200 in 141.6659 ms
+2026-06-06 18:37:32 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 178.5925ms
+2026-06-06 18:38:31 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - application/json 85
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Executing endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(ProductService.Application.DTOs.CreateProductRequest) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Handling request CreateProductCommand
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Executed DbCommand (13ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Single), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Id], [Description], [Name], [Price], [Stock])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Request CreateProductCommand executed in 283 ms
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Handled request CreateProductCommand in 296 ms
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Executed action ProductService.API.Controllers.ProductController.Create (ProductService) in 396.0293ms
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] Executed endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] HTTP POST /api/Product/CreateProduct responded 200 in 515.8843 ms
+2026-06-06 18:38:31 [INF] [CorrelationId: 2cf7dea4-39d7-4e78-92cd-7d7d57d2f8ad] HTTP POST /api/Product/CreateProduct responded 200 in 532.3991 ms
+2026-06-06 18:38:31 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - 200 null application/json; charset=utf-8 549.8955ms
+2026-06-06 18:38:45 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Handling request GetAllProductsQuery
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Handled request GetAllProductsQuery in 2 ms
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 32.5474ms
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] HTTP GET /api/Product/GetAllProducts responded 200 in 122.3139 ms
+2026-06-06 18:38:45 [INF] [CorrelationId: 92f42384-89ab-47e9-b63e-b10ae3b0f620] HTTP GET /api/Product/GetAllProducts responded 200 in 134.8009 ms
+2026-06-06 18:38:45 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 160.011ms
+2026-06-06 22:20:37 [INF] [CorrelationId: ] Application is shutting down...
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Executed DbCommand (37ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-06-06 22:56:10 [INF] [CorrelationId: ] No migrations were applied. The database is already up to date.
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-06-06 22:56:10 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Now listening on: http://localhost:5192
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-06 22:56:10 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\Services\ProductService
+2026-06-06 22:56:54 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 22:56:58 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 22:56:58 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 22:56:58 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Handling request GetAllProductsQuery
+2026-06-06 22:56:59 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2026-06-06 22:56:59 [WRN] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-06 22:56:59 [WRN] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-06 22:57:00 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Executed DbCommand (127ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-06 22:57:00 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Fetch Products complete
+2026-06-06 22:57:00 [WRN] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] SLOW REQUEST ⚠ GetAllProductsQuery took 1004 ms
+2026-06-06 22:57:00 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Handled request GetAllProductsQuery in 1810 ms
+2026-06-06 22:57:00 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 22:57:00 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 1950.4934ms
+2026-06-06 22:57:00 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 22:57:00 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] HTTP GET /api/Product/GetAllProducts responded 200 in 6515.5200 ms
+2026-06-06 22:57:00 [INF] [CorrelationId: cb3dbc05-d153-45e0-90d0-f8e5fecab03c] HTTP GET /api/Product/GetAllProducts responded 200 in 6549.9316 ms
+2026-06-06 22:57:00 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 6644.6025ms
+2026-06-06 22:57:23 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Handling request GetAllProductsQuery
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Handled request GetAllProductsQuery in 43 ms
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 66.3111ms
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] HTTP GET /api/Product/GetAllProducts responded 200 in 120.1033 ms
+2026-06-06 22:57:23 [INF] [CorrelationId: 3b9d5341-0ad8-426e-b238-9159828de89b] HTTP GET /api/Product/GetAllProducts responded 200 in 125.1567 ms
+2026-06-06 22:57:23 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 148.0939ms
+2026-06-06 22:58:28 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - application/json 90
+2026-06-06 22:58:28 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Executing endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 22:58:28 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(ProductService.Application.DTOs.CreateProductRequest) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 22:58:28 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Handling request CreateProductCommand
+2026-06-06 22:58:29 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Executed DbCommand (19ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Single), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Id], [Description], [Name], [Price], [Stock])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-06-06 22:58:29 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] CACHE INVALIDATION STARTED
+2026-06-06 22:58:29 [WRN] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] SLOW REQUEST ⚠ CreateProductCommand took 502 ms
+2026-06-06 22:58:29 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Handled request CreateProductCommand in 506 ms
+2026-06-06 22:58:29 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 22:58:29 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Executed action ProductService.API.Controllers.ProductController.Create (ProductService) in 636.7817ms
+2026-06-06 22:58:29 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] Executed endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 22:58:29 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] HTTP POST /api/Product/CreateProduct responded 200 in 727.0058 ms
+2026-06-06 22:58:29 [INF] [CorrelationId: 585d9de0-b3d8-443d-9467-e0cc098d290e] HTTP POST /api/Product/CreateProduct responded 200 in 743.6484 ms
+2026-06-06 22:58:29 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - 200 null application/json; charset=utf-8 764.4404ms
+2026-06-06 22:58:39 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Handling request GetAllProductsQuery
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Executed DbCommand (7ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Fetch Products complete
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Request GetAllProductsQuery executed in 60 ms
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Handled request GetAllProductsQuery in 76 ms
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 101.3918ms
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] HTTP GET /api/Product/GetAllProducts responded 200 in 186.1485 ms
+2026-06-06 22:58:39 [INF] [CorrelationId: 893e2478-c959-4854-937b-f4cc4160cd32] HTTP GET /api/Product/GetAllProducts responded 200 in 191.4627 ms
+2026-06-06 22:58:39 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 219.3487ms
+2026-06-06 23:05:27 [INF] [CorrelationId: ] Application is shutting down...
+2026-06-06 23:06:09 [INF] [CorrelationId: ] Executed DbCommand (24ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-06-06 23:06:10 [INF] [CorrelationId: ] No migrations were applied. The database is already up to date.
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-06-06 23:06:10 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Now listening on: http://localhost:5192
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-06 23:06:10 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\Services\ProductService
+2026-06-06 23:06:28 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:06:29 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:06:29 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:06:29 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Handling request GetAllProductsQuery
+2026-06-06 23:06:30 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2026-06-06 23:06:30 [WRN] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-06 23:06:30 [WRN] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-06 23:06:30 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Executed DbCommand (21ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-06 23:06:30 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Fetch Products complete
+2026-06-06 23:06:30 [WRN] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] SLOW REQUEST ⚠ GetAllProductsQuery took 1077 ms
+2026-06-06 23:06:31 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Handled request GetAllProductsQuery in 1528 ms
+2026-06-06 23:06:31 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:06:31 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 1703.1577ms
+2026-06-06 23:06:31 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:06:31 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] HTTP GET /api/Product/GetAllProducts responded 200 in 1982.9121 ms
+2026-06-06 23:06:31 [INF] [CorrelationId: a0d2ad88-0301-4d1e-97af-0b847ea8dc64] HTTP GET /api/Product/GetAllProducts responded 200 in 2001.4058 ms
+2026-06-06 23:06:31 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 2351.2913ms
+2026-06-06 23:07:23 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - application/json 89
+2026-06-06 23:07:23 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Executing endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 23:07:23 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(ProductService.Application.DTOs.CreateProductRequest) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:07:23 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Handling request CreateProductCommand
+2026-06-06 23:07:23 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Single), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Id], [Description], [Name], [Price], [Stock])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-06-06 23:07:23 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Cache invalidation executed
+2026-06-06 23:07:23 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Request CreateProductCommand executed in 347 ms
+2026-06-06 23:07:23 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Handled request CreateProductCommand in 350 ms
+2026-06-06 23:07:24 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:07:24 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Executed action ProductService.API.Controllers.ProductController.Create (ProductService) in 458.9574ms
+2026-06-06 23:07:24 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] Executed endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 23:07:24 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] HTTP POST /api/Product/CreateProduct responded 200 in 502.6631 ms
+2026-06-06 23:07:24 [INF] [CorrelationId: 005efbb3-b8bd-4bed-90d2-0e33fba09c49] HTTP POST /api/Product/CreateProduct responded 200 in 510.2910 ms
+2026-06-06 23:07:24 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - 200 null application/json; charset=utf-8 524.8296ms
+2026-06-06 23:08:35 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Handling request GetAllProductsQuery
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Fetch Products complete
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Request GetAllProductsQuery executed in 48 ms
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Handled request GetAllProductsQuery in 62 ms
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 88.1818ms
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] HTTP GET /api/Product/GetAllProducts responded 200 in 137.9053 ms
+2026-06-06 23:08:35 [INF] [CorrelationId: 18d85c37-b7be-4bed-9d87-d62cf9f87a9c] HTTP GET /api/Product/GetAllProducts responded 200 in 154.4175 ms
+2026-06-06 23:08:35 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 175.0439ms
+2026-06-06 23:08:54 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Handling request GetAllProductsQuery
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Handled request GetAllProductsQuery in 13 ms
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 39.1543ms
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] HTTP GET /api/Product/GetAllProducts responded 200 in 95.1364 ms
+2026-06-06 23:08:54 [INF] [CorrelationId: 79008d35-d5d9-44b7-a441-629a7ec8220e] HTTP GET /api/Product/GetAllProducts responded 200 in 105.2659 ms
+2026-06-06 23:08:54 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 128.4292ms
+2026-06-06 23:09:35 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - application/json 92
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Executing endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(ProductService.Application.DTOs.CreateProductRequest) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Handling request CreateProductCommand
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Executed DbCommand (15ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Single), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Id], [Description], [Name], [Price], [Stock])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Cache invalidation executed
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Request CreateProductCommand executed in 42 ms
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Handled request CreateProductCommand in 44 ms
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Executed action ProductService.API.Controllers.ProductController.Create (ProductService) in 65.4978ms
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] Executed endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] HTTP POST /api/Product/CreateProduct responded 200 in 120.8983 ms
+2026-06-06 23:09:35 [INF] [CorrelationId: 09c6360f-d3c5-4ef9-a3f4-eedd50eb74da] HTTP POST /api/Product/CreateProduct responded 200 in 128.8093 ms
+2026-06-06 23:09:35 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - 200 null application/json; charset=utf-8 149.6972ms
+2026-06-06 23:09:44 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Handling request GetAllProductsQuery
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Fetch Products complete
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Request GetAllProductsQuery executed in 52 ms
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Handled request GetAllProductsQuery in 69 ms
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 109.494ms
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] HTTP GET /api/Product/GetAllProducts responded 200 in 199.1180 ms
+2026-06-06 23:09:44 [INF] [CorrelationId: 8a71e8cd-b5e5-419e-b389-88caf8bb6700] HTTP GET /api/Product/GetAllProducts responded 200 in 211.3970 ms
+2026-06-06 23:09:44 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 245.413ms
+2026-06-06 23:10:34 [INF] [CorrelationId: ] Application is shutting down...
+2026-06-06 23:13:13 [INF] [CorrelationId: ] Executed DbCommand (31ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 23:13:13 [INF] [CorrelationId: ] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-06-06 23:13:14 [INF] [CorrelationId: ] Executed DbCommand (54ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-06-06 23:13:14 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-06-06 23:13:14 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 23:13:14 [INF] [CorrelationId: ] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-06 23:13:14 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-06-06 23:13:14 [INF] [CorrelationId: ] No migrations were applied. The database is already up to date.
+2026-06-06 23:13:14 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-06-06 23:13:14 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-06 23:13:14 [INF] [CorrelationId: ] Now listening on: http://localhost:5192
+2026-06-06 23:13:14 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-06 23:13:14 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-06 23:13:14 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\Services\ProductService
+2026-06-06 23:13:32 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - application/json 92
+2026-06-06 23:13:32 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Executing endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 23:13:32 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(ProductService.Application.DTOs.CreateProductRequest) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:13:33 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Handling request CreateProductCommand
+2026-06-06 23:13:33 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Executed DbCommand (48ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Single), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Id], [Description], [Name], [Price], [Stock])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-06-06 23:13:33 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Cache invalidation executed
+2026-06-06 23:13:33 [WRN] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] SLOW REQUEST ⚠ CreateProductCommand took 823 ms
+2026-06-06 23:13:33 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Handled request CreateProductCommand in 845 ms
+2026-06-06 23:13:34 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:13:34 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Executed action ProductService.API.Controllers.ProductController.Create (ProductService) in 1207.1214ms
+2026-06-06 23:13:34 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] Executed endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 23:13:34 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] HTTP POST /api/Product/CreateProduct responded 200 in 1465.0965 ms
+2026-06-06 23:13:34 [INF] [CorrelationId: 7765979e-b233-473e-b147-9889ea9fbc40] HTTP POST /api/Product/CreateProduct responded 200 in 1483.1533 ms
+2026-06-06 23:13:34 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - 200 null application/json; charset=utf-8 1641.17ms
+2026-06-06 23:13:51 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:13:51 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:13:51 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:13:51 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Handling request GetAllProductsQuery
+2026-06-06 23:13:57 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2026-06-06 23:13:58 [WRN] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-06 23:13:58 [WRN] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-06-06 23:13:58 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-06 23:13:58 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Fetch Products complete
+2026-06-06 23:13:58 [WRN] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] SLOW REQUEST ⚠ GetAllProductsQuery took 6837 ms
+2026-06-06 23:13:58 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Handled request GetAllProductsQuery in 6877 ms
+2026-06-06 23:13:58 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:13:58 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 6913.2462ms
+2026-06-06 23:13:58 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:13:58 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] HTTP GET /api/Product/GetAllProducts responded 200 in 7021.6056 ms
+2026-06-06 23:13:58 [INF] [CorrelationId: 5739de0b-edb2-4287-b0b2-3efd992c33e9] HTTP GET /api/Product/GetAllProducts responded 200 in 7036.6101 ms
+2026-06-06 23:13:58 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 7065.4371ms
+2026-06-06 23:14:38 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Handling request GetAllProductsQuery
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Handled request GetAllProductsQuery in 16 ms
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 45.3944ms
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] HTTP GET /api/Product/GetAllProducts responded 200 in 101.6412 ms
+2026-06-06 23:14:38 [INF] [CorrelationId: f353a45b-b5b0-4a8a-b43a-8a733eb8847c] HTTP GET /api/Product/GetAllProducts responded 200 in 107.8281 ms
+2026-06-06 23:14:38 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 132.0316ms
+2026-06-06 23:14:40 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Handling request GetAllProductsQuery
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Handled request GetAllProductsQuery in 1 ms
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 40.719ms
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] HTTP GET /api/Product/GetAllProducts responded 200 in 108.7666 ms
+2026-06-06 23:14:40 [INF] [CorrelationId: dc6aceaa-0033-47cc-bb39-ece09cc02c4a] HTTP GET /api/Product/GetAllProducts responded 200 in 123.8768 ms
+2026-06-06 23:14:40 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 161.977ms
+2026-06-06 23:15:06 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - application/json 89
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Executing endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Route matched with {action = "Create", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(ProductService.Application.DTOs.CreateProductRequest) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Handling request CreateProductCommand
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Executed DbCommand (19ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (DbType = Single), @p4='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([Id], [Description], [Name], [Price], [Stock])
+VALUES (@p0, @p1, @p2, @p3, @p4);
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Cache invalidation executed
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Request CreateProductCommand executed in 84 ms
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Handled request CreateProductCommand in 92 ms
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:15:06 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Executed action ProductService.API.Controllers.ProductController.Create (ProductService) in 136.08ms
+2026-06-06 23:15:07 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] Executed endpoint 'ProductService.API.Controllers.ProductController.Create (ProductService)'
+2026-06-06 23:15:07 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] HTTP POST /api/Product/CreateProduct responded 200 in 263.4281 ms
+2026-06-06 23:15:07 [INF] [CorrelationId: 1bc4e971-8af1-4c54-a001-9d94380d9d15] HTTP POST /api/Product/CreateProduct responded 200 in 396.8740 ms
+2026-06-06 23:15:07 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5192/api/Product/CreateProduct - 200 null application/json; charset=utf-8 697.955ms
+2026-06-06 23:15:21 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:15:21 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:15:21 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:15:21 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Handling request GetAllProductsQuery
+2026-06-06 23:15:27 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Executed DbCommand (19ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2026-06-06 23:15:27 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Description], [p].[Name], [p].[Price], [p].[Stock]
+FROM [Products] AS [p]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2026-06-06 23:15:27 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Fetch Products complete
+2026-06-06 23:15:27 [WRN] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] SLOW REQUEST ⚠ GetAllProductsQuery took 6342 ms
+2026-06-06 23:15:27 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Handled request GetAllProductsQuery in 6451 ms
+2026-06-06 23:15:27 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:15:28 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 6654.9264ms
+2026-06-06 23:15:28 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:15:28 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] HTTP GET /api/Product/GetAllProducts responded 200 in 6800.3361 ms
+2026-06-06 23:15:28 [INF] [CorrelationId: b5dad93e-ba9e-4cdf-881a-b0c6e572556a] HTTP GET /api/Product/GetAllProducts responded 200 in 6812.4884 ms
+2026-06-06 23:15:28 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 6860.6512ms
+2026-06-06 23:15:39 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - application/json 47
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Executing endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Route matched with {action = "GetAll", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(ProductService.Application.DTOs.ProductQueryParameter) on controller ProductService.API.Controllers.ProductController (ProductService).
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Handling request GetAllProductsQuery
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Handled request GetAllProductsQuery in 2 ms
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Executing OkObjectResult, writing value of type 'ProductService.Application.Common.ApiResponse`1[[ProductService.Application.Common.PagedResponse`1[[ProductService.Application.DTOs.ProductResponse, ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], ProductService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Executed action ProductService.API.Controllers.ProductController.GetAll (ProductService) in 40.8537ms
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] Executed endpoint 'ProductService.API.Controllers.ProductController.GetAll (ProductService)'
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] HTTP GET /api/Product/GetAllProducts responded 200 in 107.9853 ms
+2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] HTTP GET /api/Product/GetAllProducts responded 200 in 126.4743 ms
+2026-06-06 23:15:39 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 151.6706ms
+2026-06-06 23:17:01 [INF] [CorrelationId: ] Application is shutting down...
