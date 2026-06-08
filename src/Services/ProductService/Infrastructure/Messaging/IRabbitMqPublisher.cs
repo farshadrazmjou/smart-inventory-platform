@@ -1,0 +1,6 @@
+namespace ProductService.Infrastructure.Messaging;
+
+public interface IRabbitMqPublisher
+{
+    Task PublishAsync<T>(string queueName,T message);
+}

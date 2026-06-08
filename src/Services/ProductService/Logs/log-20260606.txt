@@ -700,3 +700,200 @@ OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
 2026-06-06 23:15:39 [INF] [CorrelationId: 8d12a342-b54d-4b72-a882-bd0b1e9ee449] HTTP GET /api/Product/GetAllProducts responded 200 in 126.4743 ms
 2026-06-06 23:15:39 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 151.6706ms
 2026-06-06 23:17:01 [INF] [CorrelationId: ] Application is shutting down...
+2026-06-06 23:42:00 [INF] [CorrelationId: ] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_getapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session', @LockMode = 'Exclusive';
+SELECT @result
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+IF OBJECT_ID(N'[__EFMigrationsHistory]') IS NULL
+BEGIN
+    CREATE TABLE [__EFMigrationsHistory] (
+        [MigrationId] nvarchar(150) NOT NULL,
+        [ProductVersion] nvarchar(32) NOT NULL,
+        CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY ([MigrationId])
+    );
+END;
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Executed DbCommand (20ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-06-06 23:42:01 [INF] [CorrelationId: ] No migrations were applied. The database is already up to date.
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DECLARE @result int;
+EXEC @result = sp_releaseapplock @Resource = '__EFMigrationsLock', @LockOwner = 'Session';
+SELECT @result
+2026-06-06 23:42:01 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Now listening on: http://localhost:5192
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-06 23:42:01 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\Services\ProductService
+2026-06-06 23:42:07 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/healthy - null null
+2026-06-06 23:42:07 [INF] [CorrelationId: 594cdc82-7512-4076-831c-c5a070659d44] Executing endpoint 'Health checks'
+2026-06-06 23:42:07 [INF] [CorrelationId: 594cdc82-7512-4076-831c-c5a070659d44] Executed endpoint 'Health checks'
+2026-06-06 23:42:07 [INF] [CorrelationId: 594cdc82-7512-4076-831c-c5a070659d44] HTTP GET /healthy responded 200 in 341.3412 ms
+2026-06-06 23:42:07 [INF] [CorrelationId: 594cdc82-7512-4076-831c-c5a070659d44] HTTP GET /healthy responded 200 in 368.3269 ms
+2026-06-06 23:42:07 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/healthy - 200 null text/plain 425.3675ms
+2026-06-06 23:42:34 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/healthy - null null
+2026-06-06 23:42:34 [INF] [CorrelationId: 489e2726-67b1-4ef7-a0cb-e245c37dd9bd] Executing endpoint 'Health checks'
+2026-06-06 23:42:40 [ERR] [CorrelationId: 489e2726-67b1-4ef7-a0cb-e245c37dd9bd] Health check redis with status "Unhealthy" completed after 5818.529ms with message 'null'
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: SocketClosed (ReadEndOfStream, last-recv: 0) on localhost:6379/Interactive, Idle/MarkProcessed, last: PING, origin: ReadFromPipe, outstanding: 0, last-read: 0s ago, last-write: 14s ago, keep-alive: 60s, state: ConnectedEstablished, mgr: 8 of 10 available, in: 0, in-pipe: 0, out-pipe: 0, last-heartbeat: 0s ago, last-mbeat: 0s ago, global: 0s ago, v: 2.7.27.49176, command=PING, timeout: 5000, inst: 0, qu: 0, qs: 12, aw: False, bw: CheckingForTimeout, rs: ReadAsync, ws: Idle, in: 0, in-pipe: 0, out-pipe: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 3, serverEndpoint: localhost:6379, conn-sec: 17.99, aoc: 1, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-5D0GURN(SE.Redis-v2.7.27.49176), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=0,Free=32767,Min=4,Max=32767), POOL: (Threads=3,QueuedItems=0,CompletedItems=121,Timers=3), v: 2.7.27.49176 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: SocketClosed (ReadEndOfStream, last-recv: 0) on localhost:6379/Interactive, Idle/MarkProcessed, last: PING, origin: ReadFromPipe, outstanding: 0, last-read: 0s ago, last-write: 14s ago, keep-alive: 60s, state: ConnectedEstablished, mgr: 8 of 10 available, in: 0, in-pipe: 0, out-pipe: 0, last-heartbeat: 0s ago, last-mbeat: 0s ago, global: 0s ago, v: 2.7.27.49176
+   --- End of inner exception stack trace ---
+   at HealthChecks.Redis.RedisHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /home/runner/work/AspNetCore.Diagnostics.HealthChecks/AspNetCore.Diagnostics.HealthChecks/src/HealthChecks.Redis/RedisHealthCheck.cs:line 75
+2026-06-06 23:42:40 [INF] [CorrelationId: 489e2726-67b1-4ef7-a0cb-e245c37dd9bd] Executed endpoint 'Health checks'
+2026-06-06 23:42:40 [ERR] [CorrelationId: 489e2726-67b1-4ef7-a0cb-e245c37dd9bd] HTTP GET /healthy responded 503 in 5881.3320 ms
+2026-06-06 23:42:40 [ERR] [CorrelationId: 489e2726-67b1-4ef7-a0cb-e245c37dd9bd] HTTP GET /healthy responded 503 in 5886.7138 ms
+2026-06-06 23:42:40 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/healthy - 503 null text/plain 5939.7814ms
+2026-06-06 23:43:49 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/healthy - null null
+2026-06-06 23:43:49 [INF] [CorrelationId: 4a9b065a-8e54-478c-bd16-3fb5d081e58e] Executing endpoint 'Health checks'
+2026-06-06 23:43:49 [INF] [CorrelationId: 4a9b065a-8e54-478c-bd16-3fb5d081e58e] Executed endpoint 'Health checks'
+2026-06-06 23:43:49 [INF] [CorrelationId: 4a9b065a-8e54-478c-bd16-3fb5d081e58e] HTTP GET /healthy responded 200 in 53.0751 ms
+2026-06-06 23:43:49 [INF] [CorrelationId: 4a9b065a-8e54-478c-bd16-3fb5d081e58e] HTTP GET /healthy responded 200 in 66.9379 ms
+2026-06-06 23:43:49 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/healthy - 200 null text/plain 85.9956ms
+2026-06-06 23:43:58 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/healthy - null null
+2026-06-06 23:43:58 [INF] [CorrelationId: ec984693-9d28-436b-8a63-c122d4a5427a] Executing endpoint 'Health checks'
+2026-06-06 23:44:13 [ERR] [CorrelationId: ec984693-9d28-436b-8a63-c122d4a5427a] Health check sqlserver with status "Unhealthy" completed after 15043.065ms with message 'null'
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - The wait operation timed out.)
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, TimeoutTimer timeout, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, Func`3 accessTokenCallback)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at HealthChecks.SqlServer.SqlServerHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /home/runner/work/AspNetCore.Diagnostics.HealthChecks/AspNetCore.Diagnostics.HealthChecks/src/HealthChecks.SqlServer/SqlServerHealthCheck.cs:line 28
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:258,State:0,Class:20
+2026-06-06 23:44:13 [INF] [CorrelationId: ec984693-9d28-436b-8a63-c122d4a5427a] Executed endpoint 'Health checks'
+2026-06-06 23:44:13 [ERR] [CorrelationId: ec984693-9d28-436b-8a63-c122d4a5427a] HTTP GET /healthy responded 503 in 15102.8791 ms
+2026-06-06 23:44:13 [ERR] [CorrelationId: ec984693-9d28-436b-8a63-c122d4a5427a] HTTP GET /healthy responded 503 in 15113.4755 ms
+2026-06-06 23:44:13 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/healthy - 503 null text/plain 15130.9849ms
+2026-06-06 23:44:27 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/healthy - null null
+2026-06-06 23:44:27 [INF] [CorrelationId: c3918286-4be5-448f-88ff-dba4c3c68e33] Executing endpoint 'Health checks'
+2026-06-06 23:44:27 [ERR] [CorrelationId: c3918286-4be5-448f-88ff-dba4c3c68e33] Health check sqlserver with status "Unhealthy" completed after 22.2712ms with message 'null'
+Microsoft.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - An existing connection was forcibly closed by the remote host.)
+ ---> System.ComponentModel.Win32Exception (10054): An existing connection was forcibly closed by the remote host.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at Microsoft.Data.SqlClient.TdsParser.ConsumePreLoginHandshake(SqlConnectionEncryptOption encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean& marsCapable, Boolean& fedAuthRequired, Boolean tlsFirst, String serverCert)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, TimeoutTimer timeout, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, Func`3 accessTokenCallback)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at HealthChecks.SqlServer.SqlServerHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /home/runner/work/AspNetCore.Diagnostics.HealthChecks/AspNetCore.Diagnostics.HealthChecks/src/HealthChecks.SqlServer/SqlServerHealthCheck.cs:line 28
+ClientConnectionId:c5c1ed32-ffe2-4b71-860d-9f76be18298e
+Error Number:10054,State:0,Class:20
+2026-06-06 23:44:27 [INF] [CorrelationId: c3918286-4be5-448f-88ff-dba4c3c68e33] Executed endpoint 'Health checks'
+2026-06-06 23:44:27 [ERR] [CorrelationId: c3918286-4be5-448f-88ff-dba4c3c68e33] HTTP GET /healthy responded 503 in 143.9463 ms
+2026-06-06 23:44:27 [ERR] [CorrelationId: c3918286-4be5-448f-88ff-dba4c3c68e33] HTTP GET /healthy responded 503 in 161.7144 ms
+2026-06-06 23:44:28 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/healthy - 503 null text/plain 223.7564ms
+2026-06-06 23:44:43 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/healthy - null null
+2026-06-06 23:44:43 [INF] [CorrelationId: 1220363a-018c-40f8-8a61-85a8cf1e574e] Executing endpoint 'Health checks'
+2026-06-06 23:44:43 [ERR] [CorrelationId: 1220363a-018c-40f8-8a61-85a8cf1e574e] Health check sqlserver with status "Unhealthy" completed after 14.3466ms with message 'null'
+Microsoft.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - An existing connection was forcibly closed by the remote host.)
+ ---> System.ComponentModel.Win32Exception (10054): An existing connection was forcibly closed by the remote host.
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ThrowExceptionAndWarning(Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at Microsoft.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at Microsoft.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at Microsoft.Data.SqlClient.TdsParser.ConsumePreLoginHandshake(SqlConnectionEncryptOption encrypt, Boolean trustServerCert, Boolean integratedSecurity, Boolean& marsCapable, Boolean& fedAuthRequired, Boolean tlsFirst, String serverCert)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, TimeoutTimer timeout, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool, Func`3 accessTokenCallback)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at HealthChecks.SqlServer.SqlServerHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /home/runner/work/AspNetCore.Diagnostics.HealthChecks/AspNetCore.Diagnostics.HealthChecks/src/HealthChecks.SqlServer/SqlServerHealthCheck.cs:line 28
+ClientConnectionId:2ae0cb9d-4cb5-46cb-8dce-2be915dd02a1
+Error Number:10054,State:0,Class:20
+2026-06-06 23:44:44 [INF] [CorrelationId: 1220363a-018c-40f8-8a61-85a8cf1e574e] Executed endpoint 'Health checks'
+2026-06-06 23:44:44 [ERR] [CorrelationId: 1220363a-018c-40f8-8a61-85a8cf1e574e] HTTP GET /healthy responded 503 in 818.6261 ms
+2026-06-06 23:44:44 [ERR] [CorrelationId: 1220363a-018c-40f8-8a61-85a8cf1e574e] HTTP GET /healthy responded 503 in 917.4220 ms
+2026-06-06 23:44:44 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/healthy - 503 null text/plain 1118.1777ms
+2026-06-06 23:44:52 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/healthy - null null
+2026-06-06 23:44:52 [INF] [CorrelationId: cf0c2598-a079-4452-a7d0-386c52ee9740] Executing endpoint 'Health checks'
+2026-06-06 23:44:52 [ERR] [CorrelationId: cf0c2598-a079-4452-a7d0-386c52ee9740] Health check sqlserver with status "Unhealthy" completed after 12.8454ms with message 'null'
+Microsoft.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - An existing connection was forcibly closed by the remote host.)
+ ---> System.ComponentModel.Win32Exception (10054): An existing connection was forcibly closed by the remote host.
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at HealthChecks.SqlServer.SqlServerHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /home/runner/work/AspNetCore.Diagnostics.HealthChecks/AspNetCore.Diagnostics.HealthChecks/src/HealthChecks.SqlServer/SqlServerHealthCheck.cs:line 28
+ClientConnectionId:2ae0cb9d-4cb5-46cb-8dce-2be915dd02a1
+Error Number:10054,State:0,Class:20
+2026-06-06 23:44:52 [INF] [CorrelationId: cf0c2598-a079-4452-a7d0-386c52ee9740] Executed endpoint 'Health checks'
+2026-06-06 23:44:52 [ERR] [CorrelationId: cf0c2598-a079-4452-a7d0-386c52ee9740] HTTP GET /healthy responded 503 in 59.2554 ms
+2026-06-06 23:44:52 [ERR] [CorrelationId: cf0c2598-a079-4452-a7d0-386c52ee9740] HTTP GET /healthy responded 503 in 72.0773 ms
+2026-06-06 23:44:52 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/healthy - 503 null text/plain 110.36ms
+2026-06-06 23:44:56 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/healthy - null null
+2026-06-06 23:44:56 [INF] [CorrelationId: 5b0ca50d-6b59-4c79-bfd5-8257e847b744] Executing endpoint 'Health checks'
+2026-06-06 23:44:56 [ERR] [CorrelationId: 5b0ca50d-6b59-4c79-bfd5-8257e847b744] Health check sqlserver with status "Unhealthy" completed after 0.3875ms with message 'null'
+Microsoft.Data.SqlClient.SqlException (0x80131904): A connection was successfully established with the server, but then an error occurred during the pre-login handshake. (provider: TCP Provider, error: 0 - An existing connection was forcibly closed by the remote host.)
+ ---> System.ComponentModel.Win32Exception (10054): An existing connection was forcibly closed by the remote host.
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at HealthChecks.SqlServer.SqlServerHealthCheck.CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken) in /home/runner/work/AspNetCore.Diagnostics.HealthChecks/AspNetCore.Diagnostics.HealthChecks/src/HealthChecks.SqlServer/SqlServerHealthCheck.cs:line 28
+ClientConnectionId:2ae0cb9d-4cb5-46cb-8dce-2be915dd02a1
+Error Number:10054,State:0,Class:20
+2026-06-06 23:44:56 [INF] [CorrelationId: 5b0ca50d-6b59-4c79-bfd5-8257e847b744] Executed endpoint 'Health checks'
+2026-06-06 23:44:56 [ERR] [CorrelationId: 5b0ca50d-6b59-4c79-bfd5-8257e847b744] HTTP GET /healthy responded 503 in 72.1894 ms
+2026-06-06 23:44:57 [ERR] [CorrelationId: 5b0ca50d-6b59-4c79-bfd5-8257e847b744] HTTP GET /healthy responded 503 in 82.7225 ms
+2026-06-06 23:44:57 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/healthy - 503 null text/plain 135.8037ms
+2026-06-06 23:45:16 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5192/healthy - null null
+2026-06-06 23:45:16 [INF] [CorrelationId: 07a28ec2-778e-47e0-8b9b-28215c9d62e2] Executing endpoint 'Health checks'
+2026-06-06 23:45:16 [INF] [CorrelationId: 07a28ec2-778e-47e0-8b9b-28215c9d62e2] Executed endpoint 'Health checks'
+2026-06-06 23:45:16 [INF] [CorrelationId: 07a28ec2-778e-47e0-8b9b-28215c9d62e2] HTTP GET /healthy responded 200 in 96.8690 ms
+2026-06-06 23:45:16 [INF] [CorrelationId: 07a28ec2-778e-47e0-8b9b-28215c9d62e2] HTTP GET /healthy responded 200 in 102.6390 ms
+2026-06-06 23:45:16 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5192/healthy - 200 null text/plain 118.529ms
+2026-06-06 23:45:31 [INF] [CorrelationId: ] Application is shutting down...

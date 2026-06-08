@@ -18,6 +18,8 @@ using MediatR;
 using ProductService.Application.Features.Products.Queries;
 using ProductService.Application.Behaviors;
 using ProductService.Infrastructure.Caching;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using ProductService.Infrastructure.Messaging;
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -40,6 +42,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog();
 
 builder.Services.AddControllers();
+
+builder.Services.AddHealthChecks()
+    .AddSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")!)
+    .AddRedis(builder.Configuration["redis:ConnectionStrings"]!);
 
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateProductRequest>();
@@ -143,10 +149,17 @@ builder.Services.AddTransient(
     implementationType: typeof(PerformanceBehavior<,>)
 );
 
+// RabbitMQ
+builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection("RabbitMq"));
+builder.Services.AddScoped<IRabbitMqPublisher,RabbitMqPublisher>();
+builder.Services.AddHostedService<ProductCreatedConsumer>();
+
+
 builder.Services.AddScoped<IRedisCacheService,RedisCacheService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddAutoMapper(typeof(ProductProfile));
+
 
 var app = builder.Build();
 
@@ -202,6 +215,11 @@ using (var scope = app.Services.CreateScope())
         throw lastException;
     }
 }
+
+app.MapHealthChecks( pattern: "/health",options: new HealthCheckOptions
+{
+     Predicate= _ =>true
+});
 
 app.Run();
 

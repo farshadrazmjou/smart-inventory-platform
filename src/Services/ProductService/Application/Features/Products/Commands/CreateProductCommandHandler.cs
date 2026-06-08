@@ -2,9 +2,11 @@ using AutoMapper;
 using MediatR;
 using ProductService.Application.Common;
 using ProductService.Application.DTOs;
+using ProductService.Application.Events;
 using ProductService.Application.Interfaces;
 using ProductService.Domain.Entities;
 using ProductService.Infrastructure.Caching;
+using ProductService.Infrastructure.Messaging;
 
 namespace ProductService.Application.Features.Products.Commands;
 
@@ -15,13 +17,15 @@ public class CreateProductCommandHandler:
     private readonly IMapper _mapper;
     private readonly IRedisCacheService _redisCacheService;
     private readonly ILogger<CreateProductCommandHandler> _logger;
+    private readonly IRabbitMqPublisher _rabbitMqPublisher;
 
-    public CreateProductCommandHandler(IProductRepository repository,IMapper mapper,IRedisCacheService redisCacheService,ILogger<CreateProductCommandHandler> logger)
+    public CreateProductCommandHandler(IProductRepository repository,IMapper mapper,IRedisCacheService redisCacheService,ILogger<CreateProductCommandHandler> logger,IRabbitMqPublisher rabbitMqPublisher)
     {
         _repository=repository;
         _mapper=mapper;
         _redisCacheService=redisCacheService;
         _logger=logger;
+        _rabbitMqPublisher=rabbitMqPublisher;
     }
 
     public async Task<ApiResponse<ProductResponse>> Handle(CreateProductCommand command,CancellationToken cancellationToken)
@@ -30,7 +34,14 @@ public class CreateProductCommandHandler:
 
         var createdProduct=await _repository.AddAsync(product);
         await _redisCacheService.RemoveProductCachesAsync();
-        _logger.LogInformation("Cache invalidation executed");
+        
+        await _rabbitMqPublisher.PublishAsync(queueName: "product-created",message: new ProductCreatedEvent()
+        {
+            Id=createdProduct.Id,
+            Name=createdProduct.Name,
+            Price=createdProduct.Price,
+            CreatedAt=DateTime.UtcNow
+        });
         
         return new ApiResponse<ProductResponse>()
         {

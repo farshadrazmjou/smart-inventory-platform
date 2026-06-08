@@ -1,0 +1,50 @@
+2026-06-09 00:02:57 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-09 00:02:57 [INF] [CorrelationId: ] Loading proxy data from config.
+2026-06-09 00:02:58 [INF] [CorrelationId: ] Now listening on: http://localhost:5118
+2026-06-09 00:02:58 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-09 00:02:58 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-09 00:02:58 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\ApiGateway
+2026-06-09 00:03:46 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - application/json 52
+2026-06-09 00:03:54 [INF] [CorrelationId: c0787887-5fe2-409c-b0f3-1ab5369f3e6d] Executing endpoint 'auth-route'
+2026-06-09 00:03:54 [INF] [CorrelationId: c0787887-5fe2-409c-b0f3-1ab5369f3e6d] Proxying to http://localhost:5134/api/Auth/login HTTP/2 RequestVersionOrLower 
+2026-06-09 00:04:03 [INF] [CorrelationId: c0787887-5fe2-409c-b0f3-1ab5369f3e6d] Received HTTP/1.1 response 200.
+2026-06-09 00:04:03 [INF] [CorrelationId: c0787887-5fe2-409c-b0f3-1ab5369f3e6d] Executed endpoint 'auth-route'
+2026-06-09 00:04:03 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - 200 null application/json; charset=utf-8 16717.6766ms
+2026-06-09 00:04:34 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-09 00:04:34 [INF] [CorrelationId: 519b3aef-a56c-4b8b-817a-ac04f38b61a1] Executing endpoint 'product-route'
+2026-06-09 00:04:34 [INF] [CorrelationId: 519b3aef-a56c-4b8b-817a-ac04f38b61a1] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-09 00:04:52 [INF] [CorrelationId: 519b3aef-a56c-4b8b-817a-ac04f38b61a1] Received HTTP/1.1 response 200.
+2026-06-09 00:04:52 [INF] [CorrelationId: 519b3aef-a56c-4b8b-817a-ac04f38b61a1] Executed endpoint 'product-route'
+2026-06-09 00:04:52 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 17927.2346ms
+2026-06-09 00:06:03 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 86
+2026-06-09 00:06:03 [INF] [CorrelationId: c74b6030-9119-4c3f-a926-6ed119126562] Executing endpoint 'product-route'
+2026-06-09 00:06:03 [INF] [CorrelationId: c74b6030-9119-4c3f-a926-6ed119126562] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-09 00:06:04 [INF] [CorrelationId: c74b6030-9119-4c3f-a926-6ed119126562] Received HTTP/1.1 response 200.
+2026-06-09 00:06:04 [INF] [CorrelationId: c74b6030-9119-4c3f-a926-6ed119126562] Executed endpoint 'product-route'
+2026-06-09 00:06:04 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 709.0582ms
+2026-06-09 00:13:44 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 91
+2026-06-09 00:13:44 [INF] [CorrelationId: feb71782-d756-40d7-a893-743f7cbf5004] Executing endpoint 'product-route'
+2026-06-09 00:13:44 [INF] [CorrelationId: feb71782-d756-40d7-a893-743f7cbf5004] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-09 00:13:47 [INF] [CorrelationId: feb71782-d756-40d7-a893-743f7cbf5004] Received HTTP/1.1 response 200.
+2026-06-09 00:13:47 [INF] [CorrelationId: feb71782-d756-40d7-a893-743f7cbf5004] Executed endpoint 'product-route'
+2026-06-09 00:13:47 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 2218.8931ms
+2026-06-09 00:26:15 [INF] [CorrelationId: ] Application is shutting down...
+2026-06-09 00:29:42 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-09 00:29:42 [INF] [CorrelationId: ] Loading proxy data from config.
+2026-06-09 00:29:42 [INF] [CorrelationId: ] Now listening on: http://localhost:5118
+2026-06-09 00:29:42 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-09 00:29:42 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-09 00:29:42 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\ApiGateway
+2026-06-09 00:30:05 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - application/json 47
+2026-06-09 00:30:06 [INF] [CorrelationId: 23f42e53-bf51-4f92-b3c6-1c1b6e4432dd] Executing endpoint 'product-route'
+2026-06-09 00:30:06 [INF] [CorrelationId: 23f42e53-bf51-4f92-b3c6-1c1b6e4432dd] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-09 00:30:14 [INF] [CorrelationId: 23f42e53-bf51-4f92-b3c6-1c1b6e4432dd] Received HTTP/1.1 response 200.
+2026-06-09 00:30:14 [INF] [CorrelationId: 23f42e53-bf51-4f92-b3c6-1c1b6e4432dd] Executed endpoint 'product-route'
+2026-06-09 00:30:14 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 8553.7807ms
+2026-06-09 00:31:14 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 92
+2026-06-09 00:31:15 [INF] [CorrelationId: 2d00c284-067b-4ec4-abd7-51d5da00f6ae] Executing endpoint 'product-route'
+2026-06-09 00:31:15 [INF] [CorrelationId: 2d00c284-067b-4ec4-abd7-51d5da00f6ae] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-09 00:31:16 [INF] [CorrelationId: 2d00c284-067b-4ec4-abd7-51d5da00f6ae] Received HTTP/1.1 response 200.
+2026-06-09 00:31:16 [INF] [CorrelationId: 2d00c284-067b-4ec4-abd7-51d5da00f6ae] Executed endpoint 'product-route'
+2026-06-09 00:31:16 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 1685.8546ms
+2026-06-09 00:32:04 [INF] [CorrelationId: ] Application is shutting down...

@@ -5,10 +5,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
+builder.Services.AddHealthChecks()
+    .AddSqlServer(connectionString: builder.Configuration.GetConnectionString("DefaultConnection")!);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -116,5 +120,10 @@ using (var scope = app.Services.CreateScope())
         }
     }
 }
+
+app.MapHealthChecks("/Health",new HealthCheckOptions
+{
+    Predicate= _ => true
+});
 
 app.Run();
