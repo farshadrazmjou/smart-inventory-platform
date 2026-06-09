@@ -20,6 +20,7 @@ using ProductService.Application.Behaviors;
 using ProductService.Infrastructure.Caching;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using ProductService.Infrastructure.Messaging;
+using ProductService.Infrastructure.Services.BackgroundServices;
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -154,8 +155,14 @@ builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection("R
 builder.Services.AddScoped<IRabbitMqPublisher,RabbitMqPublisher>();
 builder.Services.AddHostedService<ProductCreatedConsumer>();
 
+builder.Services.AddHostedService<OutboxBackgroundService>();
+builder.Services.AddSingleton(implementationFactory: sp =>
+{
+    return sp.GetRequiredService<Microsoft.Extensions.Options.IOptions<RabbitMqSettings>>().Value;
+});
 
-builder.Services.AddScoped<IRedisCacheService,RedisCacheService>();
+builder.Services.AddScoped<IOutboxRepository, OutboxRepository>();
+builder.Services.AddScoped<IRedisCacheService, RedisCacheService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddAutoMapper(typeof(ProductProfile));

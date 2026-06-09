@@ -9,4 +9,5 @@ public class ProductDbContext : DbContext
     {}
 
     public DbSet<Product> Products => Set<Product>();
+    public DbSet<OutboxMessage> OutboxMessages => Set<OutboxMessage>();
 }

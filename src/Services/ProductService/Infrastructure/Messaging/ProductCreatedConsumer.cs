@@ -1,5 +1,7 @@
 using System.Text;
+using System.Text.Json;
 using Microsoft.Extensions.Options;
+using ProductService.Application.Events;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -38,11 +40,17 @@ public class ProductCreatedConsumer : BackgroundService
 
         var consumer = new AsyncEventingBasicConsumer(channel);
 
-        consumer.ReceivedAsync += async (sender , ea) =>
+        consumer.ReceivedAsync += async (sender , args) =>
         {
-            var body=ea.Body.ToArray();
+            var body=args.Body.ToArray();
             var message=Encoding.UTF8.GetString(body);
-            _logger.LogInformation(message: $"RabbitMQ Message Received: {message}");
+            var product=JsonSerializer.Deserialize<ProductCreatedEvent>(message);
+
+            _logger.LogInformation( message: "Product Created Event Received => Id:{Id} Name:{Name}",
+                product?.Id , product?.Name );
+
+            await channel.BasicAckAsync(args.DeliveryTag, multiple: false);
+
             await Task.CompletedTask;
         };
 
