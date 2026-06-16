@@ -46,6 +46,8 @@ public class CreateProductCommandHandler:
             CreatedAt=DateTime.UtcNow
         };
 
+        await _rabbitMqPublisher.PublishAsync(queueName: "product-created",message: productCreatedEvent);
+
         var outbox=new OutboxMessage()
         {
             Id=Guid.NewGuid(),
@@ -54,8 +56,8 @@ public class CreateProductCommandHandler:
             CreatedAt=DateTime.UtcNow,
             Processed=false
         };
+
         await _outboxRepository.AddAsync(outbox);
-        //await _rabbitMqPublisher.PublishAsync(queueName: "product-created",message: productCreatedEvent);
         
         return new ApiResponse<ProductResponse>()
         {

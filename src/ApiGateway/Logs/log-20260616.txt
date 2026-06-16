@@ -1,0 +1,106 @@
+2026-06-16 19:40:36 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-16 19:40:37 [INF] [CorrelationId: ] Loading proxy data from config.
+2026-06-16 19:40:37 [INF] [CorrelationId: ] Now listening on: http://localhost:5118
+2026-06-16 19:40:37 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-16 19:40:38 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-16 19:40:39 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\ApiGateway
+2026-06-16 19:46:38 [INF] [CorrelationId: ] Application is shutting down...
+2026-06-16 20:54:32 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-16 20:54:32 [INF] [CorrelationId: ] Loading proxy data from config.
+2026-06-16 20:54:33 [ERR] [CorrelationId: ] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://[::1]:5118: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__14_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2026-06-16 20:55:49 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-16 20:55:49 [INF] [CorrelationId: ] Loading proxy data from config.
+2026-06-16 20:55:49 [INF] [CorrelationId: ] Now listening on: http://localhost:5118
+2026-06-16 20:55:49 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-16 20:55:49 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-16 20:55:49 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\ApiGateway
+2026-06-16 20:56:41 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 89
+2026-06-16 20:56:50 [INF] [CorrelationId: 282425c8-4a48-402c-aaa1-e211ddb88034] Executing endpoint 'product-route'
+2026-06-16 20:56:50 [INF] [CorrelationId: 282425c8-4a48-402c-aaa1-e211ddb88034] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-16 20:57:02 [INF] [CorrelationId: 282425c8-4a48-402c-aaa1-e211ddb88034] Received HTTP/1.1 response 200.
+2026-06-16 20:57:02 [INF] [CorrelationId: 282425c8-4a48-402c-aaa1-e211ddb88034] Executed endpoint 'product-route'
+2026-06-16 20:57:02 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 20673.6094ms
+2026-06-16 20:57:11 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - null null
+2026-06-16 20:57:11 [INF] [CorrelationId: aed600b0-cd5e-45a7-aba2-9225d9e34f0c] Executing endpoint 'product-route'
+2026-06-16 20:57:11 [INF] [CorrelationId: aed600b0-cd5e-45a7-aba2-9225d9e34f0c] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-16 20:57:18 [INF] [CorrelationId: aed600b0-cd5e-45a7-aba2-9225d9e34f0c] Received HTTP/1.1 response 200.
+2026-06-16 20:57:19 [INF] [CorrelationId: aed600b0-cd5e-45a7-aba2-9225d9e34f0c] Executed endpoint 'product-route'
+2026-06-16 20:57:19 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 7287.936ms
+2026-06-16 20:58:28 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 89
+2026-06-16 20:58:28 [INF] [CorrelationId: 406dde60-02e3-4d3b-b782-5e1259406d55] Executing endpoint 'product-route'
+2026-06-16 20:58:28 [INF] [CorrelationId: 406dde60-02e3-4d3b-b782-5e1259406d55] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-16 20:58:29 [INF] [CorrelationId: 406dde60-02e3-4d3b-b782-5e1259406d55] Received HTTP/1.1 response 200.
+2026-06-16 20:58:29 [INF] [CorrelationId: 406dde60-02e3-4d3b-b782-5e1259406d55] Executed endpoint 'product-route'
+2026-06-16 20:58:29 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 1057.0694ms
+2026-06-16 21:08:09 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 89
+2026-06-16 21:08:09 [INF] [CorrelationId: eae14e2f-7d3c-4b0f-9dd3-7fef5f577d70] Executing endpoint 'product-route'
+2026-06-16 21:08:09 [INF] [CorrelationId: eae14e2f-7d3c-4b0f-9dd3-7fef5f577d70] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-16 21:08:09 [INF] [CorrelationId: eae14e2f-7d3c-4b0f-9dd3-7fef5f577d70] Received HTTP/1.1 response 200.
+2026-06-16 21:08:09 [INF] [CorrelationId: eae14e2f-7d3c-4b0f-9dd3-7fef5f577d70] Executed endpoint 'product-route'
+2026-06-16 21:08:09 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 323.2715ms
+2026-06-16 21:46:14 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - null null
+2026-06-16 21:46:14 [INF] [CorrelationId: 3e1170e8-0ab6-4557-8d3c-b474aef37248] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/16/2026 5:56:20 PM', Current time (UTC): '6/16/2026 6:16:14 PM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-06-16 21:46:14 [INF] [CorrelationId: 3e1170e8-0ab6-4557-8d3c-b474aef37248] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/16/2026 5:56:20 PM', Current time (UTC): '6/16/2026 6:16:14 PM'.
+2026-06-16 21:46:14 [INF] [CorrelationId: 3e1170e8-0ab6-4557-8d3c-b474aef37248] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-16 21:46:14 [INF] [CorrelationId: 3e1170e8-0ab6-4557-8d3c-b474aef37248] AuthenticationScheme: Bearer was challenged.
+2026-06-16 21:46:14 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 401 0 null 148.3126ms
+2026-06-16 21:46:22 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - application/json 52
+2026-06-16 21:46:22 [INF] [CorrelationId: cb05ca7c-3420-4222-bcbc-073fd36b31a8] Executing endpoint 'auth-route'
+2026-06-16 21:46:22 [INF] [CorrelationId: cb05ca7c-3420-4222-bcbc-073fd36b31a8] Proxying to http://localhost:5134/api/Auth/login HTTP/2 RequestVersionOrLower 
+2026-06-16 21:46:31 [INF] [CorrelationId: cb05ca7c-3420-4222-bcbc-073fd36b31a8] Received HTTP/1.1 response 200.
+2026-06-16 21:46:31 [INF] [CorrelationId: cb05ca7c-3420-4222-bcbc-073fd36b31a8] Executed endpoint 'auth-route'
+2026-06-16 21:46:31 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - 200 null application/json; charset=utf-8 9067.7491ms
+2026-06-16 21:46:52 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - null null
+2026-06-16 21:46:52 [INF] [CorrelationId: fd14ffc2-6bbd-440d-af5a-4eda940aabf4] Executing endpoint 'product-route'
+2026-06-16 21:46:52 [INF] [CorrelationId: fd14ffc2-6bbd-440d-af5a-4eda940aabf4] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-16 21:47:04 [INF] [CorrelationId: fd14ffc2-6bbd-440d-af5a-4eda940aabf4] Received HTTP/1.1 response 200.
+2026-06-16 21:47:04 [INF] [CorrelationId: fd14ffc2-6bbd-440d-af5a-4eda940aabf4] Executed endpoint 'product-route'
+2026-06-16 21:47:04 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 11839.0161ms
+2026-06-16 21:48:14 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 97
+2026-06-16 21:48:14 [INF] [CorrelationId: d14a320f-9e7e-48ea-977a-73ff54e3b00d] Executing endpoint 'product-route'
+2026-06-16 21:48:14 [INF] [CorrelationId: d14a320f-9e7e-48ea-977a-73ff54e3b00d] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-16 21:48:15 [INF] [CorrelationId: d14a320f-9e7e-48ea-977a-73ff54e3b00d] Received HTTP/1.1 response 200.
+2026-06-16 21:48:15 [INF] [CorrelationId: d14a320f-9e7e-48ea-977a-73ff54e3b00d] Executed endpoint 'product-route'
+2026-06-16 21:48:15 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 931.3ms
+2026-06-16 23:30:49 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - application/json 52
+2026-06-16 23:30:49 [INF] [CorrelationId: 15a3fc64-c529-46c6-8484-99ea2fe8e99a] Executing endpoint 'auth-route'
+2026-06-16 23:30:49 [INF] [CorrelationId: 15a3fc64-c529-46c6-8484-99ea2fe8e99a] Proxying to http://localhost:5134/api/Auth/login HTTP/2 RequestVersionOrLower 
+2026-06-16 23:30:49 [INF] [CorrelationId: 15a3fc64-c529-46c6-8484-99ea2fe8e99a] Received HTTP/1.1 response 200.
+2026-06-16 23:30:49 [INF] [CorrelationId: 15a3fc64-c529-46c6-8484-99ea2fe8e99a] Executed endpoint 'auth-route'
+2026-06-16 23:30:49 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - 200 null application/json; charset=utf-8 365.9401ms
+2026-06-16 23:31:32 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 90
+2026-06-16 23:31:32 [INF] [CorrelationId: 249a2f91-803e-4dd4-953e-ad581801f033] Executing endpoint 'product-route'
+2026-06-16 23:31:32 [INF] [CorrelationId: 249a2f91-803e-4dd4-953e-ad581801f033] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-16 23:31:38 [INF] [CorrelationId: 249a2f91-803e-4dd4-953e-ad581801f033] Received HTTP/1.1 response 200.
+2026-06-16 23:31:38 [INF] [CorrelationId: 249a2f91-803e-4dd4-953e-ad581801f033] Executed endpoint 'product-route'
+2026-06-16 23:31:38 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 5905.8394ms

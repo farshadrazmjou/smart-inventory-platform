@@ -75,12 +75,17 @@ services:
                 condition: service_healthy
             redis:
                 condition: service_started
+            rabbitmq:
+                condition: service_started
 
         environment:
             ASPNETCORE_ENVIRONMENT: Docker
             ASPNETCORE_URLS: http://+:8080
             ConnectionStrings__DefaultConnection: Server=sqlserver;Database=ProductDb;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;
             redis__ConnectionStrings: redis:6379
+            RabbitMq_Host: rabbitmq
+            RabbitMq_UserName: guest
+            RabbitMq_Password: quest
 
 
     apigateway:

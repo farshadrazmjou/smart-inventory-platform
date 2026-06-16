@@ -20,6 +20,8 @@ public class ProductCreatedConsumer : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        _logger.LogInformation($"RabbitMQ Consumer Started. Host={_settings.Host}");
+
         var factory = new ConnectionFactory
         {
             HostName = _settings.Host,
@@ -42,6 +44,8 @@ public class ProductCreatedConsumer : BackgroundService
 
         consumer.ReceivedAsync += async (sender , args) =>
         {
+            _logger.LogInformation("Message received from RabbitMQ");
+
             var body=args.Body.ToArray();
             var message=Encoding.UTF8.GetString(body);
             var product=JsonSerializer.Deserialize<ProductCreatedEvent>(message);
@@ -56,7 +60,7 @@ public class ProductCreatedConsumer : BackgroundService
 
          await channel.BasicConsumeAsync(
             queue: "product-created",
-            autoAck: true,
+            autoAck: false,
             consumer: consumer,
             cancellationToken: stoppingToken);
 
