@@ -1,0 +1,60 @@
+2026-06-19 14:03:35 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-19 14:03:38 [INF] [CorrelationId: ] Loading proxy data from config.
+2026-06-19 14:03:42 [INF] [CorrelationId: ] Now listening on: http://localhost:5118
+2026-06-19 14:03:45 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-19 14:03:47 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-19 14:03:50 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\ApiGateway
+2026-06-19 14:10:27 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - application/json 52
+2026-06-19 14:10:35 [INF] [CorrelationId: 9988514b-853f-4b76-af3d-0b7395e21747] Executing endpoint 'auth-route'
+2026-06-19 14:10:35 [INF] [CorrelationId: 9988514b-853f-4b76-af3d-0b7395e21747] Proxying to http://localhost:5134/api/Auth/login HTTP/2 RequestVersionOrLower 
+2026-06-19 14:10:44 [INF] [CorrelationId: 9988514b-853f-4b76-af3d-0b7395e21747] Received HTTP/1.1 response 200.
+2026-06-19 14:10:44 [INF] [CorrelationId: 9988514b-853f-4b76-af3d-0b7395e21747] Executed endpoint 'auth-route'
+2026-06-19 14:10:44 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - 200 null application/json; charset=utf-8 16987.9489ms
+2026-06-19 14:20:48 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - application/json 52
+2026-06-19 14:20:48 [INF] [CorrelationId: 4d884454-fd80-490d-bf12-39e83c8f7c76] Executing endpoint 'auth-route'
+2026-06-19 14:20:48 [INF] [CorrelationId: 4d884454-fd80-490d-bf12-39e83c8f7c76] Proxying to http://localhost:5134/api/Auth/login HTTP/2 RequestVersionOrLower 
+2026-06-19 14:20:49 [INF] [CorrelationId: 4d884454-fd80-490d-bf12-39e83c8f7c76] Received HTTP/1.1 response 200.
+2026-06-19 14:20:49 [INF] [CorrelationId: 4d884454-fd80-490d-bf12-39e83c8f7c76] Executed endpoint 'auth-route'
+2026-06-19 14:20:49 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/auth/api/Auth/login - 200 null application/json; charset=utf-8 511.4173ms
+2026-06-19 14:21:47 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - null null
+2026-06-19 14:21:48 [INF] [CorrelationId: 9d011ca3-41e9-47cc-92e7-ccf5ce670c41] Executing endpoint 'product-route'
+2026-06-19 14:21:48 [INF] [CorrelationId: 9d011ca3-41e9-47cc-92e7-ccf5ce670c41] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-19 14:22:04 [INF] [CorrelationId: 9d011ca3-41e9-47cc-92e7-ccf5ce670c41] Received HTTP/1.1 response 200.
+2026-06-19 14:22:04 [INF] [CorrelationId: 9d011ca3-41e9-47cc-92e7-ccf5ce670c41] Executed endpoint 'product-route'
+2026-06-19 14:22:04 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 17244.3821ms
+2026-06-19 14:22:18 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - null null
+2026-06-19 14:22:18 [INF] [CorrelationId: c80c4c14-0d54-4e35-8cba-a9dc5e65f8bd] Executing endpoint 'product-route'
+2026-06-19 14:22:18 [INF] [CorrelationId: c80c4c14-0d54-4e35-8cba-a9dc5e65f8bd] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-19 14:22:18 [INF] [CorrelationId: c80c4c14-0d54-4e35-8cba-a9dc5e65f8bd] Received HTTP/1.1 response 200.
+2026-06-19 14:22:19 [INF] [CorrelationId: c80c4c14-0d54-4e35-8cba-a9dc5e65f8bd] Executed endpoint 'product-route'
+2026-06-19 14:22:19 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 174.9195ms
+2026-06-19 14:22:48 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 89
+2026-06-19 14:22:48 [INF] [CorrelationId: 66ca881a-0433-432d-b3db-f59ac1d84e5d] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/17/2026 8:54:41 PM', Current time (UTC): '6/19/2026 10:52:48 AM'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateTokenPayloadAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at Microsoft.IdentityModel.JsonWebTokens.JsonWebTokenHandler.ValidateJWSAsync(JsonWebToken jsonWebToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+2026-06-19 14:22:48 [INF] [CorrelationId: 66ca881a-0433-432d-b3db-f59ac1d84e5d] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/17/2026 8:54:41 PM', Current time (UTC): '6/19/2026 10:52:48 AM'.
+2026-06-19 14:22:48 [INF] [CorrelationId: 66ca881a-0433-432d-b3db-f59ac1d84e5d] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-19 14:22:49 [INF] [CorrelationId: 66ca881a-0433-432d-b3db-f59ac1d84e5d] AuthenticationScheme: Bearer was challenged.
+2026-06-19 14:22:49 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 401 0 null 403.7122ms
+2026-06-19 14:23:00 [INF] [CorrelationId: ] Request starting HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - application/json 89
+2026-06-19 14:23:00 [INF] [CorrelationId: cfcd8b6a-f99e-4e75-a3aa-99c944c26d1b] Executing endpoint 'product-route'
+2026-06-19 14:23:00 [INF] [CorrelationId: cfcd8b6a-f99e-4e75-a3aa-99c944c26d1b] Proxying to http://localhost:5192/api/Product/CreateProduct HTTP/2 RequestVersionOrLower 
+2026-06-19 14:23:01 [INF] [CorrelationId: cfcd8b6a-f99e-4e75-a3aa-99c944c26d1b] Received HTTP/1.1 response 200.
+2026-06-19 14:23:01 [INF] [CorrelationId: cfcd8b6a-f99e-4e75-a3aa-99c944c26d1b] Executed endpoint 'product-route'
+2026-06-19 14:23:01 [INF] [CorrelationId: ] Request finished HTTP/1.1 POST http://localhost:5118/products/api/Product/CreateProduct - 200 null application/json; charset=utf-8 895.4172ms
+2026-06-19 14:57:22 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - null null
+2026-06-19 14:57:22 [INF] [CorrelationId: 16ea256d-8834-4020-a913-a3eb587701ed] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-06-19 14:57:22 [INF] [CorrelationId: 16ea256d-8834-4020-a913-a3eb587701ed] AuthenticationScheme: Bearer was challenged.
+2026-06-19 14:57:22 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 401 0 null 27.7353ms
+2026-06-19 14:58:21 [INF] [CorrelationId: ] Request starting HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - null null
+2026-06-19 14:58:21 [INF] [CorrelationId: 72e1d94f-7edd-4682-a933-42d34653d334] Executing endpoint 'product-route'
+2026-06-19 14:58:21 [INF] [CorrelationId: 72e1d94f-7edd-4682-a933-42d34653d334] Proxying to http://localhost:5192/api/Product/GetAllProducts HTTP/2 RequestVersionOrLower 
+2026-06-19 14:58:27 [INF] [CorrelationId: 72e1d94f-7edd-4682-a933-42d34653d334] Received HTTP/1.1 response 200.
+2026-06-19 14:58:27 [INF] [CorrelationId: 72e1d94f-7edd-4682-a933-42d34653d334] Executed endpoint 'product-route'
+2026-06-19 14:58:27 [INF] [CorrelationId: ] Request finished HTTP/1.1 GET http://localhost:5118/products/api/Product/GetAllProducts - 200 null application/json; charset=utf-8 6217.5146ms
+2026-06-19 15:03:31 [INF] [CorrelationId: ] Application is shutting down...

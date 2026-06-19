@@ -53,6 +53,9 @@ services:
 
         environment:
             ASPNETCORE_ENVIRONMENT: Docker
+            RabbitMq__Host: rabbitmq
+            RabbitMq__UserName: guest
+            RabbitMq__Password: guest
             
     authservice:
         build:
@@ -95,9 +98,9 @@ services:
             ASPNETCORE_URLS: http://+:8080
             ConnectionStrings__DefaultConnection: Server=sqlserver;Database=ProductDb;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;
             redis__ConnectionStrings: redis:6379
-            RabbitMq_Host: rabbitmq
-            RabbitMq_UserName: guest
-            RabbitMq_Password: quest
+            RabbitMq__Host: rabbitmq
+            RabbitMq__UserName: guest
+            RabbitMq__Password: guest
 
 
     apigateway:
