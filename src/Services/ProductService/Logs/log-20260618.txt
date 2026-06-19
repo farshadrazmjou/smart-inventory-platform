@@ -1,0 +1,735 @@
+2026-06-18 00:00:02 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:07 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:12 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:17 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:23 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:28 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:33 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:38 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:43 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:48 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:53 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:00:58 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:03 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:08 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:13 [INF] [CorrelationId: ] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:18 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:23 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:28 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:33 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:38 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:43 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:48 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:53 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:01:58 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:03 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:08 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:13 [INF] [CorrelationId: ] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:18 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:23 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:28 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:33 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:38 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:43 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:48 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:53 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:02:58 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:03 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:08 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:13 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:18 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:23 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:28 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:33 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:38 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:43 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:49 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:54 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:03:59 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:04 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:09 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:14 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:19 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:24 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:29 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:34 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:39 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:44 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:49 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:54 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:04:59 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:04 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:09 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:14 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:19 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:24 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:29 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:34 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:39 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:44 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:49 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:54 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:05:59 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:04 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:09 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:14 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:19 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:24 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:29 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:34 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:39 [INF] [CorrelationId: ] Executed DbCommand (14ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:44 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:49 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:54 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:06:59 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:04 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:09 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:15 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:20 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:25 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:30 [INF] [CorrelationId: ] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:35 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:40 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:45 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:50 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:07:55 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:00 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:05 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:10 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:15 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:20 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:25 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:30 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:35 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:40 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:45 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:50 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:08:55 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:00 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:05 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:10 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:15 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:20 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:25 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:30 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:35 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:40 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:45 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:50 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:09:55 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:00 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:05 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:10 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:15 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:21 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:26 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:31 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:36 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:41 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:46 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:51 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:10:56 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:01 [INF] [CorrelationId: ] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:06 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:11 [INF] [CorrelationId: ] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:16 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:21 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:26 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:31 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:36 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:41 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:46 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:51 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:11:56 [INF] [CorrelationId: ] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 00:12:01 [INF] [CorrelationId: ] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 01:44:39 [INF] [CorrelationId: ] Executed DbCommand (250ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 01:44:46 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]
+2026-06-18 01:44:52 [INF] [CorrelationId: ] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[Id], [o].[CreatedAt], [o].[Payload], [o].[Processed], [o].[Type]
+FROM [OutboxMessages] AS [o]
+WHERE [o].[Processed] = CAST(0 AS bit)
+ORDER BY [o].[CreatedAt]

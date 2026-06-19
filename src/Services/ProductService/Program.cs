@@ -153,7 +153,7 @@ builder.Services.AddTransient(
 // RabbitMQ
 builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection("RabbitMq"));
 builder.Services.AddScoped<IRabbitMqPublisher,RabbitMqPublisher>();
-builder.Services.AddHostedService<ProductCreatedConsumer>();
+//builder.Services.AddHostedService<ProductCreatedConsumer>();
 
 builder.Services.AddHostedService<OutboxBackgroundService>();
 builder.Services.AddSingleton(implementationFactory: sp =>

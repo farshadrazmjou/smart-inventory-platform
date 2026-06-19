@@ -41,7 +41,19 @@ services:
         
         ports:
             - "6379:6379"
+            
+    notificationservice:
+        build:
+            context: ./src/Services/NotificationService
 
+        container_name: notificationservice
+
+        depends_on:
+            - rabbitmq
+
+        environment:
+            ASPNETCORE_ENVIRONMENT: Docker
+            
     authservice:
         build:
             context: ./src/Services/AuthService
