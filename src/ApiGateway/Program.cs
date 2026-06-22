@@ -57,6 +57,9 @@ builder.Services.AddAuthorization(configure: options =>
     });
 });
 
+// Http Resilience
+builder.Services.AddHttpClient(name: "resilience").AddStandardResilienceHandler();
+
 var app = builder.Build();
 
 app.UseMiddleware<CorrelationIdMiddleware>();

@@ -1,0 +1,7 @@
+2026-06-21 18:22:19 [INF] [CorrelationId: ] User profile is available. Using 'C:\Users\Farshad\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-21 18:22:20 [INF] [CorrelationId: ] Loading proxy data from config.
+2026-06-21 18:22:20 [INF] [CorrelationId: ] Now listening on: http://localhost:5118
+2026-06-21 18:22:20 [INF] [CorrelationId: ] Application started. Press Ctrl+C to shut down.
+2026-06-21 18:22:20 [INF] [CorrelationId: ] Hosting environment: Development
+2026-06-21 18:22:20 [INF] [CorrelationId: ] Content root path: D:\VSCode_Projects\InventorySystem\src\ApiGateway
+2026-06-21 18:37:02 [INF] [CorrelationId: ] Application is shutting down...

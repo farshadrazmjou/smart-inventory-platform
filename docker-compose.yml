@@ -14,6 +14,13 @@ services:
             RABBITMQ_DEFAULT_USER: guest
             RABBITMQ_DEFAULT_PASS: guest
             
+        healthcheck:
+            test : ["CMD","rabbitmq-diagnostics","-q","ping"]
+            interval : 10s
+            timeout : 5s
+            retries : 5
+            start_period : 15s
+            
     sqlserver:
         image: mcr.microsoft.com/mssql/server:2022-latest
         container_name: sqlserver
@@ -49,13 +56,16 @@ services:
         container_name: notificationservice
 
         depends_on:
-            - rabbitmq
+            rabbitmq:
+                condition : service_healthy
 
         environment:
             ASPNETCORE_ENVIRONMENT: Docker
             RabbitMq__Host: rabbitmq
             RabbitMq__UserName: guest
             RabbitMq__Password: guest
+            
+        restart : unless-stopped
             
     authservice:
         build:
@@ -78,6 +88,7 @@ services:
 
     productservice:
         build:
+
             context: ./src/Services/ProductService
 
         container_name: productservice
