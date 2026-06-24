@@ -11,5 +11,5 @@ public record GetAllProductsQuery(ProductQueryParameter Parameter) :
 {
     public string CacheKey => $"products-{Parameter.Page}-{Parameter.PageSize}";
 
-    public int ExpirationMinutes => 5;
+    public int ExpirationMinutes => 10;
 }

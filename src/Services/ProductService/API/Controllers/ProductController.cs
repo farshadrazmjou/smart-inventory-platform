@@ -55,4 +55,12 @@ public class ProductController : ControllerBase
         var result=await _mediator.Send(new DeleteProductCommand(Id));
         return Ok(result);
     }
+
+    [Authorize]
+    [HttpGet("GetProductById")]
+    public async Task<IActionResult> GetById(Guid Id)
+    {
+        var result=await _mediator.Send(new GetProductByIdQuery(Id));
+        return Ok(result);
+    }
 }
