@@ -2,28 +2,31 @@ using System.Text;
 using ApiGateway.Middleware;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
-
-Log.Logger = new LoggerConfiguration()
-    .Enrich.FromLogContext()
-    .WriteTo.Console(
-        outputTemplate:
-        "[{Timestamp:HH:mm:ss} {Level:u3}] " +
-        "[CorrelationId: {CorrelationId}] " +
-        "{Message:lj}{NewLine}{Exception}")
-    .WriteTo.File(
-        path: "Logs/log-.txt",
-        rollingInterval: RollingInterval.Day,
-        outputTemplate:
-        "{Timestamp:yyyy-MM-dd HH:mm:ss} " +
-        "[{Level:u3}] " +
-        "[CorrelationId: {CorrelationId}] " +
-        "{Message:lj}{NewLine}{Exception}")
-    .CreateLogger();
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using Serilog.Enrichers.Span;
+using BuildingBlocks.Logging.DependencyInjection;
+using BuildingBlocks.Logging.Extensions;
+using BuildingBlocks.Context.DependenctInjection;
+using BuildingBlocks.Context.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Serilog
-builder.Host.UseSerilog();
+// OpenTelemetry
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(configure: resource => 
+        resource.AddService(
+            serviceName:builder.Configuration["OpenTelemetry:ServiceName"]!,
+            serviceVersion:builder.Configuration["OpenTelemetry:ServiceVersion"]!))
+    .WithTracing(configure: tracing => 
+        tracing
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddOtlpExporter(configure: options =>
+            {
+                options.Endpoint=new Uri(builder.Configuration["OpenTelemetry:Endpoint"]!);
+                options.Protocol=OpenTelemetry.Exporter.OtlpExportProtocol.Grpc;
+            }));
 
 // YARP
 builder.Services
@@ -60,10 +63,29 @@ builder.Services.AddAuthorization(configure: options =>
 // Http Resilience
 builder.Services.AddHttpClient(name: "resilience").AddStandardResilienceHandler();
 
+// Serilog by BuildingBlocks 
+builder.Host.AddInventoryLogging(configuration: builder.Configuration);
+
+// BuildingBlocks.Context
+builder.Services.AddRequestContext();
+
 var app = builder.Build();
 
+Log.Information(messageTemplate: "ApiGateway Started Successfully");
+
+// BuildingBlocks.Context
+app.UseRequestContext();
+
+// Serilog by BuildingBlocks
+app.UseInventoryLogging();
+
 app.UseMiddleware<CorrelationIdMiddleware>();
+
 app.UseAuthentication();
+
+// Baggage by BuildingBlocks
+app.UseInventoryBaggage();
+
 app.UseAuthorization();
 app.MapReverseProxy();
 

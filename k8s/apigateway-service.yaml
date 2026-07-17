@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: apigateway
+  namespace: inventorysystem
+
+spec:
+  selector:
+    app: apigateway
+
+  type: NodePort
+
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30118

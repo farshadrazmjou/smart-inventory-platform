@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: notificationservice
+  namespace: inventorysystem
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: notificationservice
+
+  template:
+    metadata:
+      labels:
+        app: notificationservice
+
+    spec:
+      containers:
+      - name: notificationservice
+
+        image: localhost:5000/notificationservice:1.0
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 8080
+
+        env:
+            - name: RabbitMq__Host
+              value: rabbitmq
+
+            - name: RabbitMq__UserName
+              value: guest
+
+            - name: RabbitMq__Password
+              value: guest
+
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Docker

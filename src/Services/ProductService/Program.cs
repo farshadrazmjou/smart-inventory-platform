@@ -21,26 +21,56 @@ using ProductService.Infrastructure.Caching;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using ProductService.Infrastructure.Messaging;
 using ProductService.Infrastructure.Services.BackgroundServices;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using BuildingBlocks.Logging.Extensions;
+using BuildingBlocks.Logging.DependencyInjection;
+using BuildingBlocks.Context.DependenctInjection;
+using BuildingBlocks.Context.Extensions;
 
-Log.Logger = new LoggerConfiguration()
-    .Enrich.FromLogContext()
-    .WriteTo.Console(
-        outputTemplate:
-        "[{Timestamp:HH:mm:ss} {Level:u3}] " +
-        "[CorrelationId: {CorrelationId}] " +
-        "{Message:lj}{NewLine}{Exception}")
-    .WriteTo.File(
-        path: "Logs/log-.txt",
-        rollingInterval: RollingInterval.Day,
-        outputTemplate:
-        "{Timestamp:yyyy-MM-dd HH:mm:ss} " +
-        "[{Level:u3}] " +
-        "[CorrelationId: {CorrelationId}] " +
-        "{Message:lj}{NewLine}{Exception}")
-    .CreateLogger();
+// Log.Logger = new LoggerConfiguration()
+//     .Enrich.FromLogContext()
+//     .WriteTo.Console(
+//         outputTemplate:
+//         "[{Timestamp:HH:mm:ss} {Level:u3}] " +
+//         "[CorrelationId: {CorrelationId}] " +
+//         "{Message:lj}{NewLine}{Exception}")
+//     .WriteTo.File(
+//         path: "Logs/log-.txt",
+//         rollingInterval: RollingInterval.Day,
+//         outputTemplate:
+//         "{Timestamp:yyyy-MM-dd HH:mm:ss} " +
+//         "[{Level:u3}] " +
+//         "[CorrelationId: {CorrelationId}] " +
+//         "{Message:lj}{NewLine}{Exception}")
+//     .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Host.UseSerilog();
+// builder.Host.UseSerilog();
+
+// OpenTelemetry
+builder.Services
+    .AddOpenTelemetry()
+    .ConfigureResource(resource =>
+        resource.AddService(
+            serviceName: builder.Configuration["OpenTelemetry:ServiceName"]!,
+            serviceVersion: builder.Configuration["OpenTelemetry:ServiceVersion"]!))
+    .WithTracing(tracing =>
+    {
+        tracing
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddSqlClientInstrumentation(options =>
+            {
+                options.RecordException = true;
+            })
+            .AddOtlpExporter(options =>
+            {
+                options.Endpoint = new Uri(builder.Configuration["OpenTelemetry:Endpoint"]!);
+
+                options.Protocol = OpenTelemetry.Exporter.OtlpExportProtocol.Grpc;
+            });
+    });
 
 builder.Services.AddControllers();
 
@@ -103,35 +133,6 @@ builder.Services.AddStackExchangeRedisCache(option =>
 
 builder.Services.AddAuthorization();
 builder.Services.AddMemoryCache();
-// Swagger
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT",
-        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Description = "Enter: Bearer {your token}"
-    });
-
-    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-    {
-        {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-            {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
-                {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
-});
 
 builder.Services.AddTransient(
     serviceType: typeof(IPipelineBehavior<,>),
@@ -167,25 +168,29 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddAutoMapper(typeof(ProductProfile));
 
+// Serilog by BuildingBlocks 
+builder.Host.AddInventoryLogging(builder.Configuration);
+
+// BuildingBlocks.Context
+builder.Services.AddRequestContext();
 
 var app = builder.Build();
 
+// Serilog by BuildingBlocks 
+app.UseInventoryBaggage();
+
+// BuildingBlocks.Context
+app.UseRequestContext();
+
 app.UseMiddleware<CorrelationIdMiddleware>();
-app.UseSerilogRequestLogging();
+app.UseAuthentication();
 
 app.UseMiddleware<ExceptionMiddleware>();
 
-app.UseSerilogRequestLogging();
+app.UseInventoryBaggage();
 
-app.UseAuthentication();
 app.UseAuthorization();
-
-// swagger
-app.UseSwagger();
-app.UseSwaggerUI();
-
 app.MapControllers();
-
 
 // migration
 using (var scope = app.Services.CreateScope())
@@ -229,5 +234,3 @@ app.MapHealthChecks( pattern: "/health",options: new HealthCheckOptions
 });
 
 app.Run();
-
-

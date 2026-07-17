@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: product-pod
+
+spec:
+  containers:
+    - name: productservice
+      image: inventorysystem-productservice:latest
+      ports:
+        - containerPort: 8080

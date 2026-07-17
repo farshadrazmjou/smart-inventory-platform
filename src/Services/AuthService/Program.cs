@@ -3,52 +3,28 @@ using AuthService.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using System.Text;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using OpenTelemetry.Exporter;
+using BuildingBlocks.Logging.Extensions;
+using BuildingBlocks.Logging.DependencyInjection;
+using BuildingBlocks.Context.Extensions;
+using BuildingBlocks.Context.DependenctInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddHealthChecks()
+// Add services to the container.
+
+// HealthCheck
+builder.Services
+    .AddHealthChecks()
     .AddSqlServer(connectionString: builder.Configuration.GetConnectionString("DefaultConnection")!);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
-//swagger
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddSwaggerGen(options =>
-{
-    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT",
-        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Description = "Enter: Bearer {your JWT token}"
-    });
-
-    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-    {
-        {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-            {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
-                {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
-});
-
+// JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -69,7 +45,9 @@ builder.Services.AddAuthentication(options =>
             Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Key"]!))
     };
 });
+builder.Services.AddScoped<JwtService>();
 
+// DbContext
 builder.Services.AddDbContext<AuthDbContext>(options =>
 {
     options.UseSqlServer(connectionString: builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -82,21 +60,51 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
     });
 });
 
-builder.Services.AddScoped<JwtService>();
+// OpenTelemetry
+builder.Services
+    .AddOpenTelemetry()
+    .ConfigureResource(resource => 
+        resource.AddService(
+            serviceName:builder.Configuration["OpenTelemetry:ServiceName"]!,
+            serviceVersion:builder.Configuration["OpenTelemetry:ServiceVersion"]!
+        )).
+    WithTracing(trace =>
+    {
+        trace.
+        AddSource("AuthService.Business").
+        SetSampler(sampler: new AlwaysOnSampler()).
+        AddAspNetCoreInstrumentation().
+        AddHttpClientInstrumentation().
+        AddSqlClientInstrumentation(option =>
+        {
+            option.RecordException=true;
+        }).
+        AddConsoleExporter().
+        AddOtlpExporter(option =>
+        {
+            option.Endpoint=new Uri(builder.Configuration["OpenTelemetry:Endpoint"]!);
+            option.Protocol=OtlpExportProtocol.Grpc;
+        });
+    });
+
+// Serilog by BuildingBlocks 
+builder.Host.AddInventoryLogging(configuration: builder.Configuration);
+
+// BuildingBlocks.Context
+builder.Services.AddRequestContext();
 
 var app = builder.Build();
 
-// swagger
-app.UseSwagger();
-app.UseSwaggerUI();
+// BuildingBlocks.Context
+app.UseRequestContext();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+// Serilog by BuildingBlocks 
+app.UseInventoryLogging();
 
 app.UseAuthentication();
+
+app.UseInventoryBaggage();
+
 app.UseAuthorization();
 
 app.MapControllers();
@@ -104,8 +112,7 @@ app.MapControllers();
 // migration
 using (var scope = app.Services.CreateScope())
 {
-    var dbContext =
-        scope.ServiceProvider.GetRequiredService<AuthDbContext>();
+    var dbContext = scope.ServiceProvider.GetRequiredService<AuthDbContext>();
 
     for (int i = 0; i < 10; i++)
     {

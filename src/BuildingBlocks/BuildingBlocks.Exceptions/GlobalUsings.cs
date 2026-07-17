@@ -1,0 +1,1 @@
+namespace BuildingBlocks.Exceptions;

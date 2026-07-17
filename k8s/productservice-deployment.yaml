@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: productservice
+  namespace: inventorysystem
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: productservice
+
+  template:
+    metadata:
+      labels:
+        app: productservice
+
+    spec:
+      containers:
+      - name: productservice
+
+        image: localhost:5000/productservice:1.0
+        imagePullPolicy: Always
+
+        ports:
+        - containerPort: 8080
+
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: "Docker"
+
+        - name: ASPNETCORE_URLS
+          value: "http://+:8080"
+
+        - name: ConnectionStrings__DefaultConnection
+          value: "Server=sqlserver;Database=ProductDb;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True;"
+
+        - name: redis__ConnectionStrings
+          value: "redis:6379"
+
+        - name: RabbitMq__Host
+          value: "rabbitmq"
+
+        - name: RabbitMq__UserName
+          value: "guest"
+
+        - name: RabbitMq__Password
+          value: "guest"

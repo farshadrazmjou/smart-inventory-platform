@@ -1,7 +1,21 @@
 version: '3.9'
 
 services:
+    seq:
+        image: datalust/seq:latest
+        container_name: seq
 
+        environment:
+            ACCEPT_EULA: "Y"
+            SEQ_FIRSTRUN_ADMINPASSWORD: "P@ssw0rd"
+
+        ports:
+            - "8081:80"
+            - "5341:5341"
+
+        volumes:
+            - seq_data:/data
+            
     rabbitmq:
         image: rabbitmq:3-management
         container_name: rabbitmq
@@ -51,7 +65,8 @@ services:
             
     notificationservice:
         build:
-            context: ./src/Services/NotificationService
+            context: .
+            dockerfile: Dockerfiles/NotificationService.Dockerfile
 
         container_name: notificationservice
 
@@ -69,7 +84,8 @@ services:
             
     authservice:
         build:
-            context: ./src/Services/AuthService
+            context: .
+            dockerfile: Dockerfiles/AuthService.Dockerfile
 
         container_name: authservice
 
@@ -88,8 +104,8 @@ services:
 
     productservice:
         build:
-
-            context: ./src/Services/ProductService
+            context: .
+            dockerfile: Dockerfiles/ProductService.Dockerfile
 
         container_name: productservice
 
@@ -116,7 +132,8 @@ services:
 
     apigateway:
         build:
-            context: ./src/ApiGateway
+            context: .
+            dockerfile: Dockerfiles/ApiGateway.Dockerfile
 
         container_name: apigateway
 
@@ -134,3 +151,4 @@ services:
 
 volumes:
     sqlserver_data:
+    seq_data:
