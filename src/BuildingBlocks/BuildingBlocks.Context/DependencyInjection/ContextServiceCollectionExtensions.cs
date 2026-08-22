@@ -1,12 +1,12 @@
 using BuildingBlocks.Context.Interfaces;
-using BuildingBlocks.Context.Services;
+using BuildingBlocks.Context.Models;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BuildingBlocks.Context.DependenctInjection;
 
 public static class ContextServiceCollectionExtensions
 {
-    public static IServiceCollection AddRequestContext(this IServiceCollection services)
+    public static IServiceCollection AddInventoryRequestContext(this IServiceCollection services)
     {
         services.AddHttpContextAccessor();
 

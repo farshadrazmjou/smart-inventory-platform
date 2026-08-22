@@ -25,6 +25,7 @@
     <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.Logging\BuildingBlocks.Logging.csproj" />
     <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.Context\BuildingBlocks.Context.csproj" />
     <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.Exceptions\BuildingBlocks.Exceptions.csproj" />
+    <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.Observability\BuildingBlocks.Observability.csproj" />
   </ItemGroup>
 
 </Project>

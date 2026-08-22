@@ -14,15 +14,19 @@ namespace ProductService.API.Controllers;
 public class ProductController : ControllerBase
 {
     private readonly IMediator _mediator;
-    public ProductController(IMediator mediator)
+    private readonly ILogger<ProductController> _logger;
+    public ProductController(IMediator mediator,ILogger<ProductController> logger)
     {
         _mediator=mediator;
+        _logger=logger;
     }
 
     [Authorize]
     [HttpGet("GetAllProducts")]
     public async Task<IActionResult> GetAll([FromQuery] ProductQueryParameter productQueryParameter)
     {
+        _logger.LogInformation("===== PRODUCT CONTROLLER =====");
+        Console.WriteLine("===== PRODUCT CONTROLLER =====");
         var products=await _mediator.Send(new GetAllProductsQuery(productQueryParameter));
         return Ok(value: new ApiResponse<PagedResponse<ProductResponse>>
         {

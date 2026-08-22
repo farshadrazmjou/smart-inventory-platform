@@ -15,12 +15,18 @@ public sealed class ActivityEnricher : ILogEventEnricher
         
         logEvent.AddPropertyIfAbsent(
             property: propertyFactory.CreateProperty(
-                name: LogPropertyNames.TraceId,
-                value: activity.TraceId.ToString()));
+                                        name: LogPropertyNames.TraceId,
+                                        value: activity.TraceId.ToString()));
         
         logEvent.AddPropertyIfAbsent(
             property: propertyFactory.CreateProperty(
-                name: LogPropertyNames.SpanId,
-                value: activity.SpanId.ToString()));
+                                        name: LogPropertyNames.SpanId,
+                                        value: activity.SpanId.ToString()));
+
+        logEvent.AddPropertyIfAbsent(
+            property: propertyFactory.CreateProperty(
+                                        name: LogPropertyNames.ParentSpanId,
+                                        value: activity.ParentSpanId.ToString()));
+                                        
     }
 }

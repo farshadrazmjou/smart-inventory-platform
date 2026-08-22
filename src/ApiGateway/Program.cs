@@ -2,31 +2,16 @@ using System.Text;
 using ApiGateway.Middleware;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
-using Serilog.Enrichers.Span;
 using BuildingBlocks.Logging.DependencyInjection;
 using BuildingBlocks.Logging.Extensions;
 using BuildingBlocks.Context.DependenctInjection;
 using BuildingBlocks.Context.Extensions;
+using BuildingBlocks.Exceptions.Extensions;
+using BuildingBlocks.Exceptions.DependencyInjection;
+using BuildingBlocks.Observability.DependencyInjection;
+using BuildingBlocks.Observability.Tracing;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// OpenTelemetry
-builder.Services.AddOpenTelemetry()
-    .ConfigureResource(configure: resource => 
-        resource.AddService(
-            serviceName:builder.Configuration["OpenTelemetry:ServiceName"]!,
-            serviceVersion:builder.Configuration["OpenTelemetry:ServiceVersion"]!))
-    .WithTracing(configure: tracing => 
-        tracing
-            .AddAspNetCoreInstrumentation()
-            .AddHttpClientInstrumentation()
-            .AddOtlpExporter(configure: options =>
-            {
-                options.Endpoint=new Uri(builder.Configuration["OpenTelemetry:Endpoint"]!);
-                options.Protocol=OpenTelemetry.Exporter.OtlpExportProtocol.Grpc;
-            }));
 
 // YARP
 builder.Services
@@ -63,30 +48,40 @@ builder.Services.AddAuthorization(configure: options =>
 // Http Resilience
 builder.Services.AddHttpClient(name: "resilience").AddStandardResilienceHandler();
 
-// Serilog by BuildingBlocks 
+// by BuildingBlocks.Exceptions
+builder.Services.AddInventoryExceptionHandling();
+
+// by BuildingBlocks.Context
+builder.Services.AddInventoryRequestContext();
+
+// by BuildingBlocks.Logging
 builder.Host.AddInventoryLogging(configuration: builder.Configuration);
 
-// BuildingBlocks.Context
-builder.Services.AddRequestContext();
+// by BuildingBlocks.Observability
+builder.Services.AddInventoryObservability(
+    serviceName: builder.Configuration["OpenTelemetry:ServiceName"]!,
+    serviceVersion: builder.Configuration["OpenTelemetry:ServiceVersion"]!,
+    otlpEndpoint: builder.Configuration["OpenTelemetry:Endpoint"]!,
+    activitySources: ActivityNames.ApiGateway);
 
 var app = builder.Build();
 
 Log.Information(messageTemplate: "ApiGateway Started Successfully");
 
-// BuildingBlocks.Context
-app.UseRequestContext();
+// by BuildingBlocks.Exceptions
+app.UseInventoryExceptionHandler();
 
-// Serilog by BuildingBlocks
+//app.UseMiddleware<CorrelationIdMiddleware>();
+
+// by BuildingBlocks.Context
+app.UseInventoryRequestContext();
+
+// by BuildingBlocks.Logging
 app.UseInventoryLogging();
 
-app.UseMiddleware<CorrelationIdMiddleware>();
-
 app.UseAuthentication();
-
-// Baggage by BuildingBlocks
-app.UseInventoryBaggage();
-
 app.UseAuthorization();
+
 app.MapReverseProxy();
 
 app.Run();

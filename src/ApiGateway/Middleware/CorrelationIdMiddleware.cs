@@ -14,10 +14,10 @@ public class CorrelationIdMiddleware
         _logger=logger;
     }
 
-    public async Task Invoke(HttpContext context)
+    public async Task Invoke(HttpContext httpContext)
     {
         var correlationId =
-            context.Request.Headers["X-Correlation-Id"].FirstOrDefault()
+            httpContext.Request.Headers["X-Correlation-Id"].FirstOrDefault()
             ?? Guid.NewGuid().ToString();
 
         using (LogContext.PushProperty(name: "CorrelationId", value: correlationId))
@@ -25,11 +25,11 @@ public class CorrelationIdMiddleware
         using (LogContext.PushProperty(name: "SpanId",value: Activity.Current?.SpanId.ToString()))
         using (LogContext.PushProperty(name: "ParentSpanId", value: Activity.Current?.ParentSpanId.ToString()))        
         {
-            context.Items["CorrelationId"] = correlationId;
-            context.Request.Headers["X-Correlation-Id"] = correlationId;
-            context.Response.Headers["X-Correlation-Id"] = correlationId;
+            httpContext.Items["CorrelationId"] = correlationId;
+            httpContext.Request.Headers["X-Correlation-Id"] = correlationId;
+            httpContext.Response.Headers["X-Correlation-Id"] = correlationId;
 
-            await _next(context);
+            await _next(httpContext);
         }
     }
 }

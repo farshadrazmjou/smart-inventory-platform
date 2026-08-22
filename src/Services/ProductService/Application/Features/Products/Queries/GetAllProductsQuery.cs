@@ -2,7 +2,6 @@ using MediatR;
 using ProductService.Application.Caching;
 using ProductService.Application.Common;
 using ProductService.Application.DTOs;
-using ProductService.Infrastructure.Caching;
 
 namespace ProductService.Application.Features.Products.Queries;
 

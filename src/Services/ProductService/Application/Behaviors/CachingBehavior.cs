@@ -25,7 +25,7 @@ public class CachingBehavior<TRequest, TResponse> :
             return await next();
         }
 
-        var cacheResponse=await _cache.GetAsync<TResponse>(cacheable.CacheKey);
+        var cacheResponse=await _cache.GetAsync<TResponse>(cacheable.CacheKey ,cancellationToken);
         if (cacheResponse is not null)
         {
             return cacheResponse;
@@ -36,14 +36,13 @@ public class CachingBehavior<TRequest, TResponse> :
         await _cache.SetAsync(
             key: cacheable.CacheKey,
             value: response,
-            expiration: TimeSpan.FromMinutes(cacheable.ExpirationMinutes));
+            expiration: TimeSpan.FromMinutes(cacheable.ExpirationMinutes) ,cancellationToken);
 
         try
         {
             if (cacheable.CacheKey.StartsWith(CacheKeys.ProductsPrefix))
             {
-                await _cache.AddCacheKeyAsync(
-                    cacheable.CacheKey);
+                await _cache.AddCacheKeyAsync(cacheable.CacheKey ,cancellationToken);
             }
         }
         catch(Exception ex)

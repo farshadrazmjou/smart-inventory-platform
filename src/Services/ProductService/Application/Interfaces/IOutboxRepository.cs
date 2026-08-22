@@ -4,9 +4,16 @@ namespace ProductService.Application.Interfaces;
 
 public interface IOutboxRepository
 {
-    Task AddAsync(OutboxMessage message);
+    Task AddAsync(OutboxMessage message,CancellationToken cancellationToken);
 
-    Task<List<OutboxMessage>> GetUnprocessedAsync();
+    Task<List<OutboxMessage>> GetUnprocessedAsync(CancellationToken cancellationToken);
 
-    Task MarkAsProcessedAsync(Guid id);
+    Task MarkAsProcessedAsync(Guid id,CancellationToken cancellationToken);
+
+    Task MarkAsFailedAttemptAsync(
+        Guid id,
+        int retryCount,
+        DateTime lastAttemptAt,
+        string error,
+        CancellationToken cancellationToken);
 }

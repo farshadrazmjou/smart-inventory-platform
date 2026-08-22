@@ -5,13 +5,15 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
-using OpenTelemetry.Exporter;
 using BuildingBlocks.Logging.Extensions;
 using BuildingBlocks.Logging.DependencyInjection;
 using BuildingBlocks.Context.Extensions;
 using BuildingBlocks.Context.DependenctInjection;
+using BuildingBlocks.Exceptions.DependencyInjection;
+using BuildingBlocks.Exceptions.Extensions;
+using BuildingBlocks.Observability.DependencyInjection;
+using BuildingBlocks.Observability.Tracing;
+using BuildingBlocks.MediatR.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,50 +62,42 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
     });
 });
 
-// OpenTelemetry
-builder.Services
-    .AddOpenTelemetry()
-    .ConfigureResource(resource => 
-        resource.AddService(
-            serviceName:builder.Configuration["OpenTelemetry:ServiceName"]!,
-            serviceVersion:builder.Configuration["OpenTelemetry:ServiceVersion"]!
-        )).
-    WithTracing(trace =>
-    {
-        trace.
-        AddSource("AuthService.Business").
-        SetSampler(sampler: new AlwaysOnSampler()).
-        AddAspNetCoreInstrumentation().
-        AddHttpClientInstrumentation().
-        AddSqlClientInstrumentation(option =>
-        {
-            option.RecordException=true;
-        }).
-        AddConsoleExporter().
-        AddOtlpExporter(option =>
-        {
-            option.Endpoint=new Uri(builder.Configuration["OpenTelemetry:Endpoint"]!);
-            option.Protocol=OtlpExportProtocol.Grpc;
-        });
-    });
+// DI
+builder.Services.AddScoped<IAuthService, AuthService.Services.AuthService>();
 
-// Serilog by BuildingBlocks 
+// Register LoggingBehavior, PerformanceBehavior, TracingBehavior
+builder.Services.AddInventoryMediatRBehavior();
+
+// by BuildingBlocks.Exceptions
+builder.Services.AddInventoryExceptionHandling();
+
+// by BuildingBlocks.Context
+builder.Services.AddInventoryRequestContext();
+
+// by BuildingBlocks.Logging
 builder.Host.AddInventoryLogging(configuration: builder.Configuration);
 
-// BuildingBlocks.Context
-builder.Services.AddRequestContext();
+// by BuildingBlocks.Observability
+builder.Services.AddInventoryObservability(
+    serviceName: builder.Configuration["OpenTelemetry:ServiceName"]!,
+    serviceVersion: builder.Configuration["OpenTelemetry:ServiceVersion"]!,
+    otlpEndpoint: builder.Configuration["OpenTelemetry:Endpoint"]!,
+    activitySources: ActivityNames.Auth);
 
 var app = builder.Build();
 
-// BuildingBlocks.Context
-app.UseRequestContext();
+// by BuildingBlocks.Exceptions
+app.UseInventoryExceptionHandler();
 
-// Serilog by BuildingBlocks 
+// by BuildingBlocks.Context
+app.UseInventoryRequestContext();
+
+// by BuildingBlocks.Logging 
 app.UseInventoryLogging();
 
 app.UseAuthentication();
 
-app.UseInventoryBaggage();
+//**app.UseInventoryBaggage();
 
 app.UseAuthorization();
 

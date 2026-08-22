@@ -3,11 +3,14 @@ namespace BuildingBlocks.Logging.Constants;
 public static class LogPropertyNames
 {
     public const string CorrelationId = "CorrelationId";
+    public const string RequestId = "RequestId";
     public const string TraceId = "TraceId";
     public const string SpanId = "SpanId";
+    public const string ParentSpanId="ParentSpanId";
 
     public const string UserId = "UserId";
     public const string Username = "Username";
+    public const string Role = "Role";
 
     public const string ClientIP = "ClientIP";
     public const string UserAgent = "UserAgent";

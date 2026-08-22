@@ -22,7 +22,7 @@ public static class SerilogConfiguration
             .Enrich.FromLogContext()
             .Enrich.WithProperty(name: "ServiceName",value: serviceName)
             .Enrich.WithProperty(name: "ServiceVersion",value: version)
-            .Enrich.With<ActivityEnricher>()
+            .Enrich.With<ActivityEnricher>()            
             .WriteTo.Console(outputTemplate: LogTemplates.Console)
             .WriteTo.File(
                 path: "Logs/log-.txt",

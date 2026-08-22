@@ -1,6 +1,6 @@
+using BuildingBlocks.Context.Interfaces;
+using BuildingBlocks.Context.Models;
 using BuildingBlocks.Logging.Configuration;
-using BuildingBlocks.Logging.Interfaces;
-using BuildingBlocks.Logging.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -15,7 +15,6 @@ public static class LoggingServiceCollectionExtensions
         hostBuilder.ConfigureServices(configureDelegate: services =>
         {
             services.AddHttpContextAccessor();
-            services.AddScoped<IUserContextAccessor,UserContextAccessor>();
         });
 
         hostBuilder.UseSerilog( configureLogger: (context,services,loggerConfiguration) =>

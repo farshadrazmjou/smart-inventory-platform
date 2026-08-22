@@ -2,39 +2,62 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: otel-collector
-  namespace: inventorysystem
+    name: otel-collector
+    namespace: inventorysystem
 
 spec:
-  replicas: 1
 
-  selector:
-    matchLabels:
-      app: otel-collector
+    replicas: 1
+    selector:
+        matchLabels:
+            app: otel-collector
 
-  template:
-    metadata:
-      labels:
-        app: otel-collector
+    template:
 
-    spec:
-      containers:
+        metadata:
+            labels:
+                app: otel-collector
 
-      - name: otel-collector
-        image: otel/opentelemetry-collector-contrib:0.129.1
+        spec:
+            containers:
+                - name: otel-collector
+                  image: otel/opentelemetry-collector-contrib:0.129.1
+                  imagePullPolicy: IfNotPresent
+                  args:
+                    - "--config=/etc/otelcol-contrib/otel-collector-config.yaml"
 
-        args:
-          - "--config=/etc/otelcol-contrib/otel-collector-config.yaml"
+                  ports:
+                    - name: grpc
+                      containerPort: 4317
+                    
+                    - name: http
+                      containerPort: 4318
+                    
+                    - name: health
+                      containerPort: 13133
 
-        ports:
-          - containerPort: 4317
-          - containerPort: 4318
+                  livenessProbe:
 
-        volumeMounts:
-          - name: collector-config
-            mountPath: /etc/otelcol-contrib
+                    httpGet:
+                        path: /
+                        port: 13133
 
-      volumes:
-        - name: collector-config
-          configMap:
-            name: otel-collector-config
+                    initialDelaySeconds: 15
+                    periodSeconds: 10
+
+                  readinessProbe:
+
+                    httpGet:
+                        path: /
+                        port: 13133
+
+                    initialDelaySeconds: 5
+                    periodSeconds: 5
+                  volumeMounts:
+                    - name: collector-config
+                      mountPath: /etc/otelcol-contrib
+
+            volumes:
+                - name: collector-config
+                  configMap:
+                    name: otel-collector-config

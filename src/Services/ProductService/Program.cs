@@ -6,9 +6,7 @@ using System.Text;
 using ProductService.Infrastructure.Data;
 using ProductService.Application.Interfaces;
 using ProductService.Infrastructure.Repositories;
-using ProductService.API.Middlewares;
 using ProductService.Application.Mappings;
-using Serilog;
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using ProductService.Application.DTOs;
@@ -21,73 +19,38 @@ using ProductService.Infrastructure.Caching;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using ProductService.Infrastructure.Messaging;
 using ProductService.Infrastructure.Services.BackgroundServices;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
 using BuildingBlocks.Logging.Extensions;
 using BuildingBlocks.Logging.DependencyInjection;
 using BuildingBlocks.Context.DependenctInjection;
 using BuildingBlocks.Context.Extensions;
+using BuildingBlocks.Exceptions.DependencyInjection;
+using BuildingBlocks.Exceptions.Extensions;
+using BuildingBlocks.Observability.DependencyInjection;
+using BuildingBlocks.Observability.Tracing;
+using BuildingBlocks.MediatR.DependencyInjection;
+using ProductService.Infrastructure.Persistence;
 
-// Log.Logger = new LoggerConfiguration()
-//     .Enrich.FromLogContext()
-//     .WriteTo.Console(
-//         outputTemplate:
-//         "[{Timestamp:HH:mm:ss} {Level:u3}] " +
-//         "[CorrelationId: {CorrelationId}] " +
-//         "{Message:lj}{NewLine}{Exception}")
-//     .WriteTo.File(
-//         path: "Logs/log-.txt",
-//         rollingInterval: RollingInterval.Day,
-//         outputTemplate:
-//         "{Timestamp:yyyy-MM-dd HH:mm:ss} " +
-//         "[{Level:u3}] " +
-//         "[CorrelationId: {CorrelationId}] " +
-//         "{Message:lj}{NewLine}{Exception}")
-//     .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
-// builder.Host.UseSerilog();
-
-// OpenTelemetry
-builder.Services
-    .AddOpenTelemetry()
-    .ConfigureResource(resource =>
-        resource.AddService(
-            serviceName: builder.Configuration["OpenTelemetry:ServiceName"]!,
-            serviceVersion: builder.Configuration["OpenTelemetry:ServiceVersion"]!))
-    .WithTracing(tracing =>
-    {
-        tracing
-            .AddAspNetCoreInstrumentation()
-            .AddHttpClientInstrumentation()
-            .AddSqlClientInstrumentation(options =>
-            {
-                options.RecordException = true;
-            })
-            .AddOtlpExporter(options =>
-            {
-                options.Endpoint = new Uri(builder.Configuration["OpenTelemetry:Endpoint"]!);
-
-                options.Protocol = OpenTelemetry.Exporter.OtlpExportProtocol.Grpc;
-            });
-    });
 
 builder.Services.AddControllers();
 
+// Health check
 builder.Services.AddHealthChecks()
     .AddSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")!)
     .AddRedis(builder.Configuration["redis:ConnectionStrings"]!);
 
+// validation
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<CreateProductRequest>();
 
+// DB Context
 builder.Services.AddDbContext<ProductDbContext>(optionsAction: op =>
 {
     op.UseSqlServer(connectionString: builder.Configuration.GetConnectionString(name: "DefaultConnection"));
 });
 
 builder.Services.AddMediatR(typeof(GetAllProductsQueryHandler).Assembly);
-
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.InvalidModelStateResponseFactory = context =>
@@ -107,7 +70,9 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     };
 });
 
-builder.Services.AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
+// JWT
+builder.Services
+    .AddAuthentication(defaultScheme: JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(configureOptions: options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
@@ -134,27 +99,22 @@ builder.Services.AddStackExchangeRedisCache(option =>
 builder.Services.AddAuthorization();
 builder.Services.AddMemoryCache();
 
+builder.Services.AddScoped<IProductService, ProductService.Application.Services.ProductService>();
+
 builder.Services.AddTransient(
     serviceType: typeof(IPipelineBehavior<,>),
     implementationType: typeof(ValidationBehavior<,>));
 
 builder.Services.AddTransient(
     serviceType: typeof(IPipelineBehavior<,>),
-    implementationType: typeof(LoggingBehavior<,>));
-
-builder.Services.AddTransient(
-    serviceType: typeof(IPipelineBehavior<,>),
     implementationType: typeof(CachingBehavior<,>));
 
-builder.Services.AddTransient(
-    serviceType: typeof(IPipelineBehavior<,>),
-    implementationType: typeof(PerformanceBehavior<,>)
-);
+// Register LoggingBehavior, PerformanceBehavior, TracingBehavior
+builder.Services.AddInventoryMediatRBehavior();
 
 // RabbitMQ
 builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection("RabbitMq"));
 builder.Services.AddScoped<IRabbitMqPublisher,RabbitMqPublisher>();
-//builder.Services.AddHostedService<ProductCreatedConsumer>();
 
 builder.Services.AddHostedService<OutboxBackgroundService>();
 builder.Services.AddSingleton(implementationFactory: sp =>
@@ -165,29 +125,42 @@ builder.Services.AddSingleton(implementationFactory: sp =>
 builder.Services.AddScoped<IOutboxRepository, OutboxRepository>();
 builder.Services.AddScoped<IRedisCacheService, RedisCacheService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddAutoMapper(typeof(ProductProfile));
 
-// Serilog by BuildingBlocks 
+// by BuildingBlocks.Exceptions
+builder.Services.AddInventoryExceptionHandling();
+
+// by BuildingBlocks.Context
+builder.Services.AddInventoryRequestContext();
+
+// by BuildingBlocks.Logging 
 builder.Host.AddInventoryLogging(builder.Configuration);
 
-// BuildingBlocks.Context
-builder.Services.AddRequestContext();
+// by BuildingBlocks.Observability
+builder.Services.AddInventoryObservability(
+    serviceName: builder.Configuration["OpenTelemetry:ServiceName"]!,
+    serviceVersion: builder.Configuration["OpenTelemetry:ServiceVersion"]!,
+    otlpEndpoint: builder.Configuration["OpenTelemetry:Endpoint"]!,
+    activitySources: [ActivityNames.Product,ActivityNames.Redis,ActivityNames.RabbitMq]);
 
 var app = builder.Build();
 
-// Serilog by BuildingBlocks 
-app.UseInventoryBaggage();
+// by BuildingBlocks.Exceptions
+app.UseInventoryExceptionHandler();
 
-// BuildingBlocks.Context
-app.UseRequestContext();
+//***app.UseMiddleware<CorrelationIdMiddleware>();
 
-app.UseMiddleware<CorrelationIdMiddleware>();
+// by BuildingBlocks.Context
+app.UseInventoryRequestContext();
+
+// by BuildingBlocks.Logging
+app.UseInventoryLogging();
+
 app.UseAuthentication();
 
-app.UseMiddleware<ExceptionMiddleware>();
-
-app.UseInventoryBaggage();
+//app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthorization();
 app.MapControllers();

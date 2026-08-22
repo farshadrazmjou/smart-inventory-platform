@@ -4,13 +4,21 @@ namespace BuildingBlocks.Context.Interfaces;
 
 public interface IRequestContext
 {
-    string? CorrelationId { get; set; }
+    public string? CorrelationId { get; set; }
 
-    string? RequestId { get; set; }
+    public string? RequestId { get; set; }
 
-    string? ClientIp { get; set; }
+    public string TraceId { get; set; }
 
-    string? UserAgent { get; set; }
+    public string SpanId { get; set; }
 
-    CurrentUser User { get; set; }
+    public UserContext User { get; set; }
+
+    public string? ClientIp { get; set; }
+
+    public string? UserAgent { get; set; }
+
+    public string? RequestPath { get; set; }
+
+    public string? Method { get; set; }
 }

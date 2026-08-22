@@ -2,31 +2,37 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: jaeger
-  namespace: inventorysystem
+    name: jaeger
+    namespace: inventorysystem
 
 spec:
-  replicas: 1
+    replicas: 1
 
-  selector:
-    matchLabels:
-      app: jaeger
+    selector:
+        matchLabels:
+            app: jaeger
 
-  template:
-    metadata:
-      labels:
-        app: jaeger
+    template:
+        metadata:
+            labels:
+                app: jaeger
 
-    spec:
-      containers:
+        spec:
+            containers:
+              - name: jaeger                
+                image: jaegertracing/all-in-one:1.71.0
+                imagePullPolicy: IfNotPresent
+                
+                env:
+                  - name: COLLECTOR_OTLP_ENABLED
+                    value: "true"
 
-      - name: jaeger
-        image: jaegertracing/all-in-one:1.58
-
-        args:
-          - "--collector.otlp.enabled=true"
-
-        ports:
-          - containerPort: 16686
-          - containerPort: 4317
-          - containerPort: 4318
+                ports:
+                  - name: ui
+                    containerPort: 16686
+                  - name: grpc
+                    containerPort: 4317
+                  - name: http
+                    containerPort: 4318
+                  - name: zipkin
+                    containerPort: 9411

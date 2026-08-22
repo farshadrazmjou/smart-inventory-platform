@@ -1,3 +1,4 @@
+using BuildingBlocks.Context.Middleware;
 using BuildingBlocks.Logging.Constants;
 using Microsoft.AspNetCore.Builder;
 using Serilog;
@@ -23,6 +24,7 @@ public static class LoggingApplicationBuilderExtensions
                     diagnosticContext.Set(
                         LogPropertyNames.RequestMethod,
                         httpContext.Request.Method);
+
                     diagnosticContext.Set(
                         LogPropertyNames.ClientIP,
                         httpContext.Connection.RemoteIpAddress?.ToString());
@@ -40,8 +42,6 @@ public static class LoggingApplicationBuilderExtensions
                         httpContext.Request.Scheme);
                 };
         });
-
-
 
         return app;
     }

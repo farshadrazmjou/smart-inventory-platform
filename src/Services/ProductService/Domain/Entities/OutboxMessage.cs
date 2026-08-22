@@ -11,4 +11,12 @@ public class OutboxMessage
     public DateTime CreatedAt { get; set; }
 
     public bool Processed { get; set; }
+
+    public int RetryCount { get; set; }
+
+    public DateTime? LastAttemptAt { get; set; }
+
+    public string? LastError { get; set; }
+
+    public DateTime? ProcessedAt { get; set; }
 }
